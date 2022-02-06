@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+// Component Imports
+// You can import components from any supported Framework here!
+import VuePage from '../components/VuePage.vue';
+
+const dat = 4;
+const accessToken = 'mg29cfpA2Ozo8wBMrWLABQtt'
+const response = await fetch(`https://api.storyblok.com/v2/cdn/stories/home?version=draft&token=${accessToken}`,);
+const { story } = await response.json();
+
+const response1 = await fetch(`https://api.storyblok.com/v2/cdn/stories/?starts_with=articles/&version=draft&token=${accessToken}`,);
+const { stories } = await response1.json();
+
+// Remember: Astro component scripts log to the CLI
+//console.log(JSON.stringify(stories));
+---
+<BaseLayout title="Västerbottens skidveteraner">
+  <VuePage story={story} articles={stories} />
+</BaseLayout>

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -10,19 +14,27 @@
 	font-size: clamp(0.875rem, 0.4626rem + 1.0309vw + var(--user-font-scale), 1.125rem);
 }
 
-body {
-	padding: 4rem 2rem;
-	width: 100%;
-	min-height: 100vh;
-	display: grid;
-	justify-content: center;
-	background: #f9fafb;
-	color: #111827;
+.main-link {
+  @apply bg-purple-600 text-white px-4 py-2 rounded-lg font-semibold shadow-xl text-center;
 }
 
-@media (prefers-color-scheme: dark) {
-	body {
-		background: #111827;
-		color: #fff;
-	}
+.hero-grid {
+}
+
+.hero-grid {
+  background-image: url(/assets/bild.jpg);
+  background-repeat: no-repeat;
+  mask-image: radial-gradient(circle, #333, #333 50%, rgba(0, 0, 0, .1) 80%, transparent 85%);
+}
+
+.map-grid {
+  background-image: url(/assets/karta.webp);
+  background-position-x: 35%;
+  background-repeat: no-repeat;
+  mask-image: radial-gradient(circle, #333, #333 50%, rgba(0, 0, 0, .1) 80%, transparent 85%);
+}
+
+.map-pin .inner-pin {
+  @apply absolute font-sans px-4 text-xl font-semibold;
+  text-shadow: rgba(255,68,0,0.9) 0px 0px 13px, rgba(255,68,0,0.9) 0px 0px 13px;
 }

@@ -1,0 +1,55 @@
+---
+
+import RaceLayout from '../layouts/RaceLayout.astro';
+import Anmalan from '../components/Anmalan.vue';
+import TrackMap from '../components/TrackMap.vue';
+// Component Imports
+// You can import components from any supported Framework here!
+
+// Remember: Astro component scripts log to the CLI
+//console.log(JSON.stringify(stories));
+---
+<RaceLayout class="" title="Resultat">
+  <section class="map-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6"></section>
+  <article class="max-w-5xl mx-auto px-6 mb-8">
+    <h2 class="text-4xl font-bold text-center uppercase my-6">Välkommen till vinterns stora upplevelse</h2>
+    <p class="text-center mb-7">På åkern i anslutning till Lantbrukskolan går starten än en gång för det anrika umeloppet. </p>
+    <div class="grid border-y-2 py-8 border-slate-400 grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div class="flex justify-between sm:justify-center gap-6">
+        <p class="font-semibold">När:</p><p>Sön 6:e Februari 2022</p>
+      </div>
+      <div class="flex justify-between sm:justify-center gap-6">
+        <p class="font-semibold">Var:</p><p>Lantbrukskolan, Umeå</p>
+      </div>
+      <div class="flex justify-between sm:justify-center gap-6">
+        <p class="font-semibold">Pris:</p><p>350:-</p>
+      </div>
+    </div>
+    
+    
+  </article>
+  <article class="p-8 bg-slate-200 mb-10">
+    <Anmalan client:idle></Anmalan>
+  </article>
+
+  <article class="mb-10">
+  <h2 class="text-4xl font-bold text-center uppercase my-6">Hitta hit & karta</h2>
+    <div class="max-w-5xl mx-auto px-6 mb-8 flex gap-4 flex-col md:flex-row place-items-start">
+    <div>
+      <p class=" max-w-xs">Loppet har start och mål på åkern nedanför Lantbrukskolan. Parkeringsmöjligheter finns men vi ser helst att ni skidar hit. </p>
+      <p class="">Det finns möjligt till sportdryck och lite tilltug på på tre stationer utefter banan . </p>
+    </div>
+      
+      <TrackMap client:visible></TrackMap>
+    </div>
+  </article>
+
+  <article class="mb-10">
+    <h2 class="text-4xl font-bold text-center uppercase my-6">Våra sponsorer</h2>
+    <div class="max-w-5xl mx-auto mb-8 grid grid-cols-3 place-items-center">
+      <img src="assets/ica-nara.svg" class="max-h-48" alt="">
+      <img src="assets/logo-vasaloppet-seedning.png" class="max-h-48" alt="">
+      <img src="assets/ica-nara.svg" class="max-h-48" alt="">
+    </div>
+  </article>
+</RaceLayout>

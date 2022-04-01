@@ -1,10 +1,11 @@
 ---
 import Logo from '../components/Logo.astro'
-const {title} = Astro.props;
+// 1. The content prop gives access to frontmatter data
+const { content } = Astro.props;
 ---
 <html lang="sv">
   <head>
-    <title>{title}</title>
+    <title>{content.title}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -12,7 +13,7 @@ const {title} = Astro.props;
   </head>
   <body class="">
     <!-- Adds a navigation bar to every page. -->
-    <div class="shadow-xl bg-gray-100">
+    <div class="shadow-xl bg-slate-100">
       <header class="z-10 relative px-4 py-4 flex flex-col justify-center items-center w-full max-w-5xl mx-auto">
         <p class=" whitespace-nowrap text-2xl sm:text-4xl font-bold -mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600">Västerbottens skidveteraner</p>
          
@@ -24,8 +25,11 @@ const {title} = Astro.props;
         </nav>
       </header>
     </div>
+    
+    <section class="mx-auto px-6 my-12 prose prose-lg lg:prose-xl min-h-[85vh]">
     <!-- slot: your page content will be injected here. -->
     <slot />
+    </section>
     <footer class="bg-gray-100 p-8">
       <div class="max-w-5xl mx-auto grid grid-cols-2 gap-8">
         <div>
@@ -43,5 +47,6 @@ const {title} = Astro.props;
         </div>
       </div>
     </footer>
+    
   </body>
 </html>

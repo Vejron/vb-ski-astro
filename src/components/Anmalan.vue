@@ -1,9 +1,14 @@
 <template>
-  <div class="p-8">
-    <form @submit.prevent="submitForm">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="font-bold text-center text-4xl uppercase">Anmäl dig här</h2>
+    <form @submit.prevent="submitForm" class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6">
       <div class="flex flex-col">
         <label for="id-name">Namn</label>
         <input v-model="formData.name" id="id-name" type="text" />
+      </div>
+      <div class="flex flex-col">
+        <label for="id-mail">E-post</label>
+        <input v-model="formData.email" id="id-mail" type="email" />
       </div>
       <div class="flex flex-col">
         <label for="id-klubb">Klubb</label>
@@ -15,6 +20,13 @@
           <option v-for="klass in klasser" :value="klass">{{ klass }}</option>
         </select>
       </div>
+      <div class="flex sm:col-span-2 justify-end mt-4">
+        <button
+          class="px-4 py-2 bg-green-500 rounded-md text-white text-2xl font-semibold"
+        >
+          Anmälan
+        </button>
+      </div>
     </form>
   </div>
 </template>
@@ -24,8 +36,9 @@ import { reactive } from "vue";
 import { loadStripe } from "@stripe/stripe-js";
 
 const submitForm = async () => {
+  return;
   const data = {
-    sku: 'DEMO001',
+    sku: "DEMO001",
     quantity: 1,
   };
 
@@ -49,6 +62,7 @@ const submitForm = async () => {
 
 const formData = reactive({
   name: "John doe",
+  email: "",
   club: "TTGU",
   class: "Motion 40Km",
 });

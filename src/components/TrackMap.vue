@@ -33,7 +33,7 @@ onUnmounted(() => {
 const setupLeafletMap = (location: any, L) => {
   const map = new L.map("mainMapContainer", { zoomControl: false }).setView(
     location,
-    14
+    13
   );
   L.control
     .zoom({
@@ -46,7 +46,7 @@ const setupLeafletMap = (location: any, L) => {
     })
     .addTo(map);
   L.geoJSON(path).addTo(map);
-  L.marker(location).addTo(map);
+  
 
   const fluid1 = [63.862985, 20.148497];
   const fluid2 = [63.886115, 20.152617];

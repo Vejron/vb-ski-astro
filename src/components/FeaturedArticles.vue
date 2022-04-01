@@ -1,27 +1,33 @@
 <template>
-<div class="">
-
-</div>
-  <section class="px-8 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-    <div v-for="article in articles" :key="article.uuid">
-    <h3>{{article.content.title}}</h3>
-    <img style="aspect-ratio: 1.618 / 1;" :src="article.content.image.filename" alt="" >
-    <RichTextRenderer
-      :text="article.content.intro"
-    />
-    </div>
-    
+  <section
+    class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8"
+  >
+    <ul v-for="post in sorted()" :key="post.url">
+      <li class="group relative overflow-hidden">
+        <a :href="post.url">
+          <img
+            class="transition-transform duration-700 group-hover:scale-105"
+            style="aspect-ratio: 1.618 / 1"
+            :src="post.thumbnail"
+            alt=""
+          />
+          <p
+            class="absolute pointer-events-none transition-transform duration-300 group-hover:scale-110 translate-y-2 group-hover:-translate-y-0 text-xl font-semibold w-full text-white py-5 text-center bg-gradient-to-t from-gray-800 bottom-0"
+          >
+            {{ post.displaytitle }}
+          </p>
+        </a>
+      </li>
+    </ul>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, inject } from "vue";
-//import { RichTextRenderer } from '@marvr/storyblok-rich-text-vue-renderer'
-import RichTextRenderer from './RichTextRenderer.vue';
 const props = defineProps({
-  blok: Object,
+  posts: Array,
 });
 
-const articles = inject('articles') as any;
-console.log('fe!!!!!!!!!!!!', articles)
+const sorted = () => {
+  return props.posts.sort((a, b) => new Date(b.date) - new Date(a.date) );
+}
 </script>

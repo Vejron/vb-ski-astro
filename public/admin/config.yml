@@ -14,7 +14,10 @@ collections:
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Featured Image", name: "thumbnail", widget: "image"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Page title (Inga åäö..)", name: "title", widget: "string"}
+      - {label: "Titel", name: "displaytitle", widget: "string"}
+      - {label: "Publicerat datum", name: "date", widget: "datetime"}
+      - {label: "Introbild", name: "thumbnail", widget: "image"}
+      - {label: "Introtext", name: "description", widget: "text"}
+      - {label: "Innehåll", name: "body", widget: "markdown"}
+      - {label: "Layout", name: "layout", widget: "string", default: "../../layouts/RaceLayout.astro"}

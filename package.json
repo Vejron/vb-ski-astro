@@ -13,7 +13,7 @@
     "@astrojs/renderer-vue": "^0.3.0",
     "@tailwindcss/typography": "^0.5.1",
     "@types/leaflet": "^1.7.9",
-    "astro": "^0.22.13",
+    "astro": "^0.22.20",
     "autoprefixer": "^10.4.2",
     "axios": "^0.25.0",
     "storyblok-js-client": "^4.2.0",

@@ -1,47 +1,31 @@
 ---
 
 import RaceLayout from '../layouts/RaceLayout.astro';
-import TrackMap from '../components/TrackMap.vue';
+import FeaturedArticles from '../components/FeaturedArticles.vue';
 // Component Imports
 // You can import components from any supported Framework here!
 
 // Remember: Astro component scripts log to the CLI
 //console.log(JSON.stringify(stories));
+const posts = Astro.fetchContent('./blog/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
+
 ---
 <RaceLayout title="Umeloppet">
   <section class="hero-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6">
-    
-    
   </section>
-  <article class="max-w-5xl mx-auto px-6 mb-8">
-    <h2 class="text-4xl font-bold text-center uppercase my-6">Välkommen till vinterns stora upplevelse</h2>
-    <p>På åkern i anslutning till Lantbrukskolan går starten än en gång för det anrika umeloppet. </p>
-    <div class="grid border-y-2 py-8 border-slate-400 grid-cols-3 gap-4 mb-8">
-      <div class="flex justify-center gap-6">
-        <p class="font-semibold">När:</p><p>Sön 6:e Februari 2022</p>
-      </div>
-      <div class="flex justify-center gap-6">
-        <p class="font-semibold">Var:</p><p>Lantbrukskolan, Umeå</p>
-      </div>
-      <div class="flex justify-center gap-6">
-        <p class="font-semibold">Pris:</p><p>350:-</p>
-      </div>
-    </div>
-    <div class="flex justify-center">
-      <a class="px-4 py-2 bg-purple-500 text-white text-2xl font-semibold" href="#">Anmälan</a>
-    </div>
-    
-  </article>
+
+  <section class="max-w-5xl mx-auto px-6 mb-8">
+    <h2 class="text-4xl font-bold text-center uppercase my-6" >Senaste nyheterna</h2>
+    <FeaturedArticles posts={posts}></FeaturedArticles>
+  </section>
+
+  
 
   <section class="map-grid h-[815px] max-w-5xl mx-auto my-8 px-6">
   </section>
 
-  <TrackMap client:visible></TrackMap>
+  
 
-  <article class="max-w-5xl mx-auto px-6 mb-8 grid grid-cols-3">
-    <img src="assets/ica-nara.svg" alt="">
-    <img src="assets/logo-vasaloppet-seedning.png" alt="">
-    <img src="assets/ica-nara.svg" alt="">
-  </article>
+  
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </RaceLayout>

@@ -1,6 +1,7 @@
 ---
 import Logo from '../components/Logo.astro'
-const {title} = Astro.props;
+import TopShape from '../components/TopShape.astro';
+const {title, footer} = Astro.props;
 ---
 <html lang="sv">
   <head>
@@ -25,8 +26,9 @@ const {title} = Astro.props;
     </div>
     <!-- slot: your page content will be injected here. -->
     <slot />
-    <footer class="bg-gray-100 p-8">
-      <div class="max-w-5xl mx-auto grid grid-cols-2 gap-8">
+    <footer class="bg-gray-100 px-6 pt-12 relative">
+      <TopShape classes={footer + " absolute -top-1 left-0 text-gray-100"}></TopShape>
+      <div class="max-w-5xl mx-auto grid grid-col-1 sm:grid-cols-2 gap-8">
         <div>
           <h2 class="font-semibold text-lg">Postadress</h2>
           <address>

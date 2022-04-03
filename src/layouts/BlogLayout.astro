@@ -1,5 +1,6 @@
 ---
 import Logo from '../components/Logo.astro'
+import TopShape from '../components/TopShape.astro';
 // 1. The content prop gives access to frontmatter data
 const { content } = Astro.props;
 ---
@@ -29,8 +30,9 @@ const { content } = Astro.props;
     <!-- slot: your page content will be injected here. -->
     <slot />
     </section>
-    <footer class="bg-gray-100 p-8">
-      <div class="max-w-5xl mx-auto grid grid-cols-2 gap-8">
+    <footer class="bg-gray-100 px-6 pt-12 pb-8 relative">
+      <TopShape classes="absolute -top-1 left-0 bg-white text-gray-100"></TopShape>
+      <div class="max-w-5xl mx-auto grid grid-col-1 sm:grid-cols-2 gap-8">
         <div>
           <h2 class="font-semibold text-lg">Postadress</h2>
           <address>

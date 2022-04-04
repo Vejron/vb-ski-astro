@@ -27,7 +27,8 @@
   background-image: url(/assets/karta.webp);
   background-position-x: 55%;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-attachment: fixed;
+  //background-size: cover;
   mask-image: radial-gradient(circle, #333, #333 50%, rgba(0, 0, 0, .1) 80%, transparent 85%);
 }
 

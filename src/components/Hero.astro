@@ -1,0 +1,39 @@
+
+<section class="wrapper">
+  <div class="section">
+    <h1>sdsds</h1>
+  </div>
+</section>
+
+<style>
+.wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+  
+}
+.section { 
+  position: relative;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 0 5px #000;
+}
+
+.section::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) scale(1.5);
+  background-size: 100%;
+  z-index: -100;
+  background-image: url('https://placekitten.com/g/900/700');
+  background-attachment: fixed;
+}
+</style>

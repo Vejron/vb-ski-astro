@@ -18,6 +18,8 @@
 .hero-grid {
   background-image: url(/assets/bild.jpg);
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 0%;
   mask-image: radial-gradient(circle, #333, #333 50%, rgba(0, 0, 0, .1) 80%, transparent 85%);
 }
 

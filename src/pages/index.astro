@@ -1,15 +1,10 @@
 ---
 
 import RaceLayout from '../layouts/RaceLayout.astro';
-import FeaturedArticles from '../components/FeaturedArticles.vue';
+import FeaturedArticles from '../components/FeaturedArticles.astro';
 import TopShape from '../components/TopShape.astro';
-// Component Imports
-// You can import components from any supported Framework here!
 
-// Remember: Astro component scripts log to the CLI
-//console.log(JSON.stringify(stories));
 const posts = Astro.fetchContent('./blog/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
-
 ---
 <RaceLayout footer="bg-slate-800" title="Umeloppet">
   <div class="relative">
@@ -18,8 +13,6 @@ const posts = Astro.fetchContent('./blog/*.md'); // returns an array of posts th
     <TopShape classes="absolute bottom-0 text-slate-800"></TopShape>
   </div>
   
-
-  
   <section class="bg-slate-800">
     <div class="max-w-5xl mx-auto px-6 pt-1 pb-8 text-white">
       <h2 class="text-4xl font-bold text-center uppercase my-6" >Senaste nyheterna</h2>
@@ -27,12 +20,5 @@ const posts = Astro.fetchContent('./blog/*.md'); // returns an array of posts th
     </div>
   </section>
  
-
-  
-
-
-  
-
-  
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </RaceLayout>

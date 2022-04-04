@@ -1,5 +1,6 @@
-import svelte from "@astrojs/svelte";
+
 import vue from "@astrojs/vue";
+//import astroImagePlugin from "astro-imagetools/plugin";
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 
@@ -18,6 +19,9 @@ export default defineConfig({
   devOptions: {// hostname: 'localhost',  // The hostname to run the dev server on.
     // port: 3000,             // The port to run the dev server on.
   },
+ /* vite: {
+    plugins: [astroImagePlugin],
+  },*/
   // ...
-  integrations: [svelte(), vue(), tailwind()]
+  integrations: [vue(), tailwind()]
 });

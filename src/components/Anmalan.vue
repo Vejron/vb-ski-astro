@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-4xl mx-auto py-8 px-6">
     <h2 class="font-bold text-center text-4xl uppercase">Anmäl dig här</h2>
     <form @submit.prevent="submitForm" class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6">
       <div class="flex flex-col">

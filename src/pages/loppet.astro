@@ -3,6 +3,8 @@
 import RaceLayout from '../layouts/RaceLayout.astro';
 import Anmalan from '../components/Anmalan.vue';
 import TrackMap from '../components/TrackMap.vue';
+import TopShape from '../components/TopShape.astro';
+import BottomShape from '../components/BottomShape.astro';
 // Component Imports
 // You can import components from any supported Framework here!
 
@@ -10,8 +12,14 @@ import TrackMap from '../components/TrackMap.vue';
 //console.log(JSON.stringify(stories));
 ---
 <RaceLayout footer="bg-white" title="Loppet">
-  <section class="map-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6"></section>
-  <article class="max-w-5xl mx-auto px-6 mb-8">
+  <div class="relative">
+    <section class="map-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6">
+    </section>
+    <TopShape classes="absolute bottom-0 text-slate-100"></TopShape>
+  </div>
+  
+  <div class="bg-slate-100">
+    <article class="max-w-5xl mx-auto px-6 py-1">
     <h2 class="text-4xl font-bold text-center uppercase my-6">Välkommen till vinterns stora upplevelse</h2>
     <p class="text-center mb-7">På åkern i anslutning till Lantbrukskolan går starten än en gång för det anrika umeloppet. </p>
     <div class="grid border-y-2 py-8 border-slate-400 grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
@@ -25,14 +33,15 @@ import TrackMap from '../components/TrackMap.vue';
         <p class="font-semibold">Pris:</p><p>350:-</p>
       </div>
     </div>
-    
-    
   </article>
-  <article class="p-8 bg-slate-200 mb-10">
+  </div>
+  
+  <article class="bg-slate-200 relative">
     <Anmalan client:idle></Anmalan>
   </article>
 
-  <article class="mb-10">
+  <article class="py-10 relative">
+  <BottomShape classes="absolute top-0 text-slate-200"></BottomShape>
   <h2 class="text-4xl font-bold text-center uppercase my-6">Hitta hit & karta</h2>
     <div class="max-w-5xl mx-auto px-6 mb-8 flex gap-4 flex-col md:flex-row place-items-start">
     <div>

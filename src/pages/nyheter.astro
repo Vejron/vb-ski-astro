@@ -7,7 +7,7 @@ import ArticleListing from '../components/ArticleListing.vue';
 
 // Remember: Astro component scripts log to the CLI
 //console.log(JSON.stringify(stories));
-const posts = Astro.fetchContent('./blog/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
+const posts = await Astro.glob('./blog/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
 
 ---
 <RaceLayout footer="bg-white" title="Umeloppet">

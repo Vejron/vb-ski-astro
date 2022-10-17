@@ -4,7 +4,7 @@ import RaceLayout from '../layouts/RaceLayout.astro';
 import FeaturedArticles from '../components/FeaturedArticles.astro';
 import TopShape from '../components/TopShape.astro';
 
-const posts = Astro.fetchContent('./blog/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
+const posts = await Astro.glob('./blog/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
 ---
 <RaceLayout footer="bg-slate-800" title="Umeloppet">
   <div class="relative">

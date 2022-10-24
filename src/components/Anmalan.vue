@@ -1,52 +1,184 @@
 <template>
   <div class="max-w-4xl mx-auto py-8 px-6">
-    <h2 class="font-bold text-center text-4xl uppercase">Anmäl dig här</h2>
+    <h2 class="font-bold text-center text-4xl uppercase mb-6">Anmäl dig här</h2>
     <form @submit.prevent="submitForm" class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6">
       <div class="flex flex-col">
-        <label for="id-name">Namn</label>
+        <label class="required font-medium mb-1" for="id-name">Namn</label>
         <input required v-model="formData.name" id="id-name" type="text" />
       </div>
       <div class="flex flex-col">
-        <label for="id-klubb">Klubb</label>
-        <input v-model="formData.club" id="id-klubb" type="text" />
-      </div>
-      <div class="flex flex-col">
-        <label for="id-klubb">Vasa-ID</label>
-        <input v-model="formData.vasa" id="id-klubb" type="text" />
-      </div>
-      <div class="flex flex-col">
-        <label for="id-mail">E-post</label>
+        <label class="required font-medium mb-1" for="id-mail">E-post</label>
         <input required v-model="formData.email" id="id-mail" type="email" />
+      </div>
+      <div class="flex flex-col">
+        <label for="id-klubb" class="font-medium mb-1">Klubb</label>
+        <input v-model="formData.club" id="id-klubb" type="text" />
       </div>
 
       <div class="flex flex-col">
-        <label for="id-klass">Sträcka</label>
-        <select required v-model="formData.distance" id="id-klass">
+        <label for="id-klubb" class="font-medium mb-1">Vasa-ID</label>
+        <input v-model="formData.vasa" id="id-klubb" type="text" />
+        <span class="text-sm mt-1">Nödvändigt för ev seedning</span>
+      </div>
+
+      <div class="flex flex-col">
+        <label class="required font-medium mb-1" for="id-distance">Sträcka</label>
+        <select required v-model="formData.distance" id="id-distance">
           <option v-for="distance in distances" :value="distance.value">{{ distance.key }}</option>
         </select>
       </div>
       <div v-if="formData.distance" class="flex flex-col">
-        <label for="id-klass">Klass</label>
+        <label class="required font-medium mb-1" for="id-klass">Klass</label>
         <select required v-model="formData.class" id="id-klass">
           <option v-for="klass in klasser" :value="klass">{{ klass }}</option>
         </select>
       </div>
-      <div class="flex sm:col-span-2 justify-end mt-4">
-        <button type="submit" class="px-4 py-2 bg-green-500 rounded-md text-white text-2xl font-semibold">
-          Anmälan
+      <div class="flex sm:col-span-2 justify-between items-end mt-4">
+        <fieldset>
+          <legend class="font-medium mb-1">Jag betalar via:</legend>
+          <div class="flex items-center">
+            <input class="transition-all" type="radio" v-model="formData.paymethod" id="id-swish" value="swish">
+            <label class="ml-2" for="id-swish">Swish</label>
+          </div>
+          <div class="flex items-center">
+            <input class="transition-all" type="radio" v-model="formData.paymethod" id="id-bg" value="bg">
+            <label class="ml-2" for="id-bg">Bankgiro</label>
+          </div>
+
+        </fieldset>
+
+        <button type="submit"
+          :class="[valid? 'bg-green-500 hover:bg-green-700 text-white': 'bg-gray-300 text-gray-600']"
+          class="inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
+          Anmäl mig
         </button>
       </div>
     </form>
+    <TransitionRoot appear :show="isOpen" as="template">
+      <Dialog as="div" @close="clickOutside" class="relative z-10">
+        <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
+          leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
+          <div class="fixed inset-0 bg-black bg-opacity-25" />
+        </TransitionChild>
+
+        <div class="fixed inset-0 overflow-y-auto">
+          <div class="flex min-h-full items-center justify-center p-4 text-center">
+            <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
+              enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"
+              leave-to="opacity-0 scale-95">
+              <DialogPanel
+                class="w-full relative max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Loader :show="showLoader"></Loader>
+                <DialogTitle as="h3" class="text-xl sm:text-2xl font-medium leading-6 text-gray-900">
+                  Granska och slutför anmälan
+                </DialogTitle>
+                <div v-if="state === 'done'" class="h-44 mt-2 flex flex-col justify-between">
+                  <p class="text-gray-700 mb-2">
+                    Tack. Vi har nu mottagit din anmälan. En bekräftelse skickas också till
+                    den e-post du uppgav. Glöm inte att betala innan ??
+                  </p>
+                  <div class="mt-4 flex justify-end gap-4">
+                    <button type="button"
+                      class="inline-flex shadow-lg justify-center rounded-md border border-transparent bg-green-200 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-green-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      @click="isOpen = false">
+                      Stäng dialog
+                    </button>
+                  </div>
+                </div>
+                <div v-else class="mt-2">
+                  <p class="text-gray-700 mb-2">
+                    Dubbelkolla gärna dina uppgifter innan du slutför anmälan. Genom att slutföra anmälan ger du oss
+                    tillstånd att behandla dina personuppgifter i enlighet med vår policy. bla bla GDPR och sånt
+                  </p>
+                  <div class="final-grid">
+                    <span>Namn</span><span class="font-medium">{{formData.name}}</span>
+                    <span>E-post</span><span class="font-medium">{{formData.email}}</span>
+                    <span v-if="formData.club">Klubb</span>
+                    <span v-if="formData.club" class="font-medium">{{formData.club}}</span>
+                    <span v-if="formData.vasa">Vasa-ID</span>
+                    <span v-if="formData.vasa" class="font-medium">{{formData.vasa}}</span>
+                    <span>Sträcka</span>
+                    <span class="font-medium">{{translateDistance(formData.distance)}}</span>
+                    <span>Klass</span><span class="font-medium">{{formData.class}}</span>
+                  </div>
+                  <p class="mt-4">
+                    <span v-if="formData.paymethod === 'bg'">Betala via Bankgiro: <span
+                        class="font-medium">780801-7</span></span>
+                    <span v-else>Swisha betalning till nr: <span class="font-medium">123 541 1848</span></span>
+                  </p>
+                  <div class="mt-4 flex justify-end gap-4">
+                    <button type="button"
+                      class="inline-flex shadow-lg justify-center rounded-md border border-transparent bg-red-200 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-red-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      @click="isOpen = false">
+                      Avbryt
+                    </button>
+                    <button type="button"
+                      class="inline-flex shadow-lg justify-center rounded-md border border-transparent bg-green-200 px-4 py-2 text-sm font-medium text-gray-900 hover:bg-green-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      @click="finalize">
+                      Slutför anmälan
+                    </button>
+                  </div>
+                </div>
+
+
+              </DialogPanel>
+            </TransitionChild>
+          </div>
+        </div>
+      </Dialog>
+    </TransitionRoot>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, computed } from "vue";
+import { reactive, computed, ref } from "vue";
+import {
+  TransitionRoot,
+  TransitionChild,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+} from '@headlessui/vue'
+import Loader from './Loader.vue'
 
+const state = ref<'initial' | 'submitting' | 'done'>('initial')
+const showLoader = computed(() => state.value === 'submitting')
+const isOpen = ref(false)
 const submitForm = async () => {
-  return;
-
+  if (state.value !== 'submitting') {
+    isOpen.value = true
+  }
 };
+const clickOutside = () => {
+  isOpen.value = false
+}
+const finalize = async () => {
+  state.value = 'submitting'
+  await new Promise(r => setTimeout(r, 500));
+  try {
+    const resp = await fetch('/.netlify/functions/sign-up', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    if (resp.status !== 200) {
+      throw new Error('')
+    }
+    state.value = 'done'
+    formData.name = ""
+    formData.email = ""
+    formData.club = ""
+    formData.class = ""
+    formData.distance = ""
+    formData.vasa = ""
+  } catch (error) {
+    alert('Vi kunde inte slutföra din anmälan')
+  }
+
+}
 
 const formData = reactive({
   name: "",
@@ -54,8 +186,13 @@ const formData = reactive({
   club: "",
   class: "",
   distance: "",
-  vasa: ""
+  vasa: "",
+  paymethod: "swish",
 });
+
+const valid = computed(() => {
+  return formData.name && formData.email && formData.class && formData.distance
+})
 
 const klasser = computed(() => {
   return distances.find(d => d.value === formData.distance)?.classes
@@ -76,8 +213,11 @@ const distances = [
       'D50',
       'D55',
       'D60',
+      'D65',
       'D70',
+      'D75',
       'D80',
+      'D85',
       'D90',
       'H21',
       'H30',
@@ -87,8 +227,11 @@ const distances = [
       'H50',
       'H55',
       'H60',
+      'H65',
       'H70',
+      'H75',
       'H80',
+      'H85',
       'H90',
     ]
   },
@@ -102,7 +245,7 @@ const distances = [
   },
   {
     value: 'para',
-    key: '10 km Paraklass',
+    key: '5 km Paraklass',
     classes: [
       'Herrar Motion',
       'Damer Motion',
@@ -110,4 +253,31 @@ const distances = [
   },
 ]
 
+const translateDistance = (distance: string) => {
+  switch (distance) {
+    case 'long':
+      return '40 Km'
+    case 'short':
+      return '20 Km'
+    case 'para':
+      return '5 km Paraklass'
+
+    default:
+      return 'Okänd'
+  }
+}
+
 </script>
+
+<style scoped>
+.required::after {
+  @apply text-red-600;
+  content: ' *';
+}
+
+.final-grid {
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  align-items: baseline;
+}
+</style>

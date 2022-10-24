@@ -10,7 +10,7 @@ const sorted = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new
     <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
       {sorted.map((post) => (
         <li class="group relative overflow-hidden">
-          <a href={post.frontmatter.url}>
+          <a href={post.url}>
             <img
               class="transition-transform duration-700 group-hover:scale-105"
               style="aspect-ratio: 1.618 / 1"

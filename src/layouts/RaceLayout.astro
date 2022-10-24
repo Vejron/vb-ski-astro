@@ -10,7 +10,7 @@ const {title, footer} = Astro.props;
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   </head>
-  <body class="">
+  <body style="scroll-behavior: smooth;" class="">
     <!-- Adds a navigation bar to every page. -->
     <div class="shadow-xl bg-gray-100">
       <header class="z-10 relative px-4 py-4 flex flex-col justify-center items-center w-full max-w-5xl mx-auto">
@@ -20,7 +20,7 @@ const {title, footer} = Astro.props;
           <a class="main-link" href="/">Hem</a>
           <a class="main-link" href="/nyheter">Nyheter</a>
           <a class="main-link" href="/loppet">Umeloppet</a>
-          <a class="main-link" href="#">Kontakt</a>
+          <a class="main-link" href="#kontakt">Kontakt</a>
         </nav>
       </header>
     </div>
@@ -28,7 +28,7 @@ const {title, footer} = Astro.props;
     <slot />
     <footer class="bg-gray-100 px-6 pt-12 pb-8 relative">
       <TopShape classes={footer + " absolute -top-1 left-0 text-gray-100"}></TopShape>
-      <div class="max-w-5xl mx-auto grid grid-col-1 sm:grid-cols-2 gap-8">
+      <div id="kontakt" class="max-w-5xl mx-auto grid grid-col-1 sm:grid-cols-2 gap-8">
         <div>
           <h2 class="font-semibold text-lg">Postadress</h2>
           <address>

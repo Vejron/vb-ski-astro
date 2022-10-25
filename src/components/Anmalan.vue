@@ -119,8 +119,6 @@
                     </button>
                   </div>
                 </div>
-
-
               </DialogPanel>
             </TransitionChild>
           </div>
@@ -176,6 +174,8 @@ const finalize = async () => {
     formData.vasa = ""
   } catch (error) {
     alert('Vi kunde inte slutföra din anmälan')
+    state.value = 'initial'
+    isOpen.value = false
   }
 
 }

@@ -1,10 +1,10 @@
 html {
   scroll-behavior: smooth;
-  font-size: 16px
+  font-size: 16px;
 }
 * {
-	box-sizing: border-box;
-	margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 .main-link {
@@ -16,7 +16,20 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 50% 0%;
-  mask-image: radial-gradient(circle, #333, #333 50%, rgba(0, 0, 0, .1) 80%, transparent 85%);
+  mask-image: radial-gradient(
+    circle,
+    #333,
+    #333 50%,
+    rgba(0, 0, 0, 0.1) 80%,
+    transparent 85%
+  );
+}
+
+@supports (-webkit-text-stroke: 2px white) {
+  .text-outline {
+    -webkit-text-stroke: 2px white;
+    -webkit-text-fill-color: rgb(46 20 117);
+  }
 }
 
 .map-grid {
@@ -25,10 +38,17 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   //background-size: cover;
-  mask-image: radial-gradient(circle, #333, #333 50%, rgba(0, 0, 0, .1) 80%, transparent 85%);
+  mask-image: radial-gradient(
+    circle,
+    #333,
+    #333 50%,
+    rgba(0, 0, 0, 0.1) 80%,
+    transparent 85%
+  );
 }
 
 .map-pin .inner-pin {
   @apply absolute font-sans px-4 text-xl font-semibold;
-  text-shadow: rgba(255,68,0,0.9) 0px 0px 13px, rgba(255,68,0,0.9) 0px 0px 13px;
+  text-shadow: rgba(255, 68, 0, 0.9) 0px 0px 13px,
+    rgba(255, 68, 0, 0.9) 0px 0px 13px;
 }

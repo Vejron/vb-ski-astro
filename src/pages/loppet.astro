@@ -13,7 +13,11 @@ import BottomShape from '../components/BottomShape.astro';
 ---
 <RaceLayout footer="bg-white" title="Loppet">
   <div class="relative">
-    <section class="map-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6">
+    <section class="map-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6 flex flex-col justify-center items-center">
+      <div class="bg-slate-200 h-40 w-40 sm:h-60 sm:w-60 rounded-full border-4 border-black">
+        <img src="/assets/veteranerna-logga.svg" class="w-full h-full" alt="ICA Nära Hissjö handel">
+      </div>
+      <p class="font-bold absolute text-4xl text-purple-600 sm:text-8xl text-slate-300 text-outline">UMELOPPET</p>
     </section>
     <TopShape classes="absolute bottom-0 text-slate-100"></TopShape>
   </div>
@@ -23,7 +27,7 @@ import BottomShape from '../components/BottomShape.astro';
     <h2 class="text-4xl font-bold text-center uppercase my-6">Välkommen till vinterns stora upplevelse</h2>
     <div class="max-w-3xl mx-auto">
     <p class="text-center mb-7">
-      <span class="font-bold">Söndag den 5:e Februari 2023.</span> På åkern i anslutning till Forslunda gymnasium, går starten för det 13:e Umeloppet. 
+      <span class="font-bold">Söndag den 5:e Februari 2023.</span> På åkern i anslutning till Forslundagymnasiet, går starten för det 13:e Umeloppet. 
        40 km seedningsgrundande för Vasaloppet, 
       20 km seedningsgrundande för Tjejvasan och 5 km parasportklass (Tävlande skall ha ledsagare).
     </p>
@@ -33,7 +37,7 @@ import BottomShape from '../components/BottomShape.astro';
         <p class="font-semibold md:hidden">När:</p><p class="md:text-xl">Söndag 5:e Februari 2023</p>
       </div>
       <div class="flex justify-between md:justify-center gap-6">
-        <p class="font-semibold md:hidden">Var:</p><p class="md:text-lg">Lantbrukskolan, Umeå</p>
+        <p class="font-semibold md:hidden">Var:</p><p class="md:text-lg">Forslundagymnasiet, Umeå</p>
       </div>
     </div>
     <div class="grid  pt-4 border-slate-400 grid-cols-1 md:grid-cols-3 gap-4 pb-8">
@@ -60,7 +64,7 @@ import BottomShape from '../components/BottomShape.astro';
   <h2 class="text-4xl font-bold text-center uppercase my-6">Hitta hit & karta</h2>
     <div class="max-w-5xl mx-auto px-6 mb-8 flex gap-4 flex-col md:flex-row place-items-start">
     <div>
-      <p class=" max-w-xs">Loppet har start och mål på åkern nedanför Lantbrukskolan. Parkeringsmöjligheter finns men vi ser helst att ni skidar hit. </p>
+      <p class=" max-w-xs">Loppet har start och mål på åkern nedanför Forslundagymnasiet. Parkeringsmöjligheter finns men vi ser helst att ni skidar hit. </p>
       <p class="">Det finns möjligt till sportdryck och lite tilltug på på tre stationer utefter banan . </p>
     </div>
       
@@ -71,9 +75,9 @@ import BottomShape from '../components/BottomShape.astro';
   <article class="mb-10">
     <h2 class="text-4xl font-bold text-center uppercase my-6">Våra sponsorer</h2>
     <div class="max-w-5xl mx-auto mb-8 grid grid-cols-3 place-items-center">
-      <img src="/assets/ica-nara.svg" class="max-h-48" alt="">
-      <img src="/assets/logo-vasaloppet-seedning.png" class="max-h-48" alt="">
-      <img src="/assets/ica-nara.svg" class="max-h-48" alt="">
+      <img src="/assets/ica-nara.png" class="max-h-48 lg:max-h-72" alt="ICA Nära Hissjö handel">
+      <img src="/assets/VL_Off_SL_2023_COMP.svg" class="max-h-48 lg:max-h-72" alt="Vasaloppet officiellt seedningslopp 2023">
+      <img src="/assets/Forslunda-logga.png" class="max-h-48 lg:max-h-72" alt="">
     </div>
   </article>
 </RaceLayout>

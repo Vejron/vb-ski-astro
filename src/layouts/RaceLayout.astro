@@ -1,7 +1,8 @@
 ---
-import Logo from '../components/Logo.astro'
 import TopShape from '../components/TopShape.astro';
+import "../styles/global.css";
 const {title, footer} = Astro.props;
+console.log(Astro.props)
 ---
 <html lang="sv">
   <head>
@@ -13,14 +14,16 @@ const {title, footer} = Astro.props;
   <body style="scroll-behavior: smooth;" class="">
     <!-- Adds a navigation bar to every page. -->
     <div class="shadow-xl bg-gray-100">
-      <header class="z-10 relative px-4 py-4 flex flex-col justify-center items-center w-full max-w-5xl mx-auto">
-        <p class=" whitespace-nowrap text-2xl sm:text-4xl font-bold -mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600">Västerbottens skidveteraner</p>
-         
-        <nav class="text-sm sm:text-lg flex-shrink-0 flex gap-2 sm:grid sm:grid-cols-4 sm:gap-4 items-end transform translate-y-9">
-          <a class="main-link" href="/">Hem</a>
-          <a class="main-link" href="/nyheter">Nyheter</a>
-          <a class="main-link" href="/loppet">Umeloppet</a>
-          <a class="main-link" href="#kontakt">Kontakt</a>
+      <header class="z-50 relative px-4 py-4 flex  justify-center items-center w-full max-w-4xl mx-auto">
+        <p class="sm:ml-4 whitespace-nowrap text-lg font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600">Västerbottens skidveteraner</p>
+        <nav class="nav text-black bg-gray-100">
+          <input class="h-auto" type="checkbox" role="button" aria-label="Display the menu" aria-expanded="false" aria-controls="menu">
+          <ul class="menu-list" id="menu">
+            <li><a class="main-link" href="/">Hem</a></li>
+            <li><a class="main-link" href="/nyheter">Nyheter</a></li>
+            <li><a class="main-link" href="/loppet">Umeloppet</a></li>
+            <li><a class="main-link" id="contact-id" href="#kontakt">Kontakt</a></li>
+          </ul>
         </nav>
       </header>
     </div>
@@ -47,6 +50,14 @@ const {title, footer} = Astro.props;
   </body>
 </html>
 
-<style global>
-@import "../styles/global.css";
-</style>
+<script>
+document.querySelector('.nav input').onclick = function() {
+    if(this.checked)
+      this.setAttribute("aria-expanded",true)
+    else
+      this.setAttribute("aria-expanded",false)
+}
+document.querySelector('#contact-id').onclick = function() {
+    document.querySelector('.nav input').click()
+}
+</script>

@@ -4,9 +4,7 @@ const {posts} = Astro.props;
 const sorted = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf() );
 ---
 
-<section
-    
-  >
+
     <ul class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
       {sorted.map((post) => (
         <li class="group relative overflow-hidden">
@@ -15,7 +13,7 @@ const sorted = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new
               class="transition-transform duration-700 group-hover:scale-105"
               style="aspect-ratio: 1.618 / 1"
               src={post.frontmatter.thumbnail}
-              alt=""
+              alt={post.frontmatter.displaytitle}
             />
             <p
               class="absolute pointer-events-none transition-transform duration-300 group-hover:scale-110 translate-y-2 group-hover:-translate-y-0 text-xl font-semibold w-full text-white py-5 text-center bg-gradient-to-t from-gray-800 bottom-0"
@@ -26,4 +24,3 @@ const sorted = posts.sort((a, b) => new Date(b.frontmatter.date).valueOf() - new
         </li>
       ))}
     </ul>
-</section>

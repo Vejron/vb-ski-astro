@@ -22,7 +22,7 @@ const { content } = Astro.props;
           <ul class="menu-list" id="menu">
             <li><a class="main-link" href="/">Hem</a></li>
             <li><a class="main-link" href="/nyheter">Nyheter</a></li>
-            <li><a class="main-link" href="/loppet">Umeloppet</a></li>
+            <li><a class="main-link" href="/umeloppet">Umeloppet</a></li>
             <li><a class="main-link" id="contact-id" href="#kontakt">Kontakt</a></li>
           </ul>
         </nav>
@@ -51,6 +51,17 @@ const { content } = Astro.props;
         </div>
       </div>
     </footer>
-    
   </body>
 </html>
+
+<script>
+  document.querySelector('.nav input').onclick = function() {
+      if(this.checked)
+        this.setAttribute("aria-expanded",true)
+      else
+        this.setAttribute("aria-expanded",false)
+  }
+  document.querySelector('#contact-id').onclick = function() {
+      document.querySelector('.nav input').click()
+  }
+  </script>

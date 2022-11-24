@@ -1,6 +1,9 @@
 <template>
   <div class="max-w-4xl mx-auto py-8 px-6">
-    <h2 class="font-bold text-center text-4xl uppercase mb-6">Anmäl dig här</h2>
+    <h2 class="font-bold text-center text-4xl uppercase mb-4">Anmäl dig här</h2>
+    <p class="text-center font-semibold text-lg mb-4">
+      Obs! Max 400 startande och sista anmälningstid 1:a Februari kl 24:00
+    </p>
     <form @submit.prevent="submitForm" class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6">
       <div class="flex flex-col">
         <label class="required font-medium mb-1" for="id-name">Namn</label>
@@ -41,14 +44,14 @@
             <label class="ml-2" for="id-swish">Swish</label>
           </div>
           <div class="flex items-center">
-            <input class="transition-all" type="radio" v-model="formData.paymethod" id="id-bg" value="bg">
-            <label class="ml-2" for="id-bg">Bankgiro</label>
+            <input class="transition-all" type="radio" v-model="formData.paymethod" id="id-bg" value="pg">
+            <label class="ml-2" for="id-bg">PlusGirot</label>
           </div>
 
         </fieldset>
 
         <button type="submit"
-          :class="[valid? 'bg-green-500 hover:bg-green-700 text-white': 'bg-gray-300 text-gray-600']"
+          :class="[valid ? 'bg-green-500 hover:bg-green-700 text-white' : 'bg-gray-300 text-gray-600']"
           class="inline-flex justify-center rounded-md border border-transparent px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2">
           Anmäl mig
         </button>
@@ -91,18 +94,18 @@
                     tillstånd att behandla dina personuppgifter i enlighet med vår policy. bla bla GDPR och sånt
                   </p>
                   <div class="final-grid">
-                    <span>Namn</span><span class="font-medium">{{formData.name}}</span>
-                    <span>E-post</span><span class="font-medium">{{formData.email}}</span>
+                    <span>Namn</span><span class="font-medium">{{ formData.name }}</span>
+                    <span>E-post</span><span class="font-medium">{{ formData.email }}</span>
                     <span v-if="formData.club">Klubb</span>
-                    <span v-if="formData.club" class="font-medium">{{formData.club}}</span>
+                    <span v-if="formData.club" class="font-medium">{{ formData.club }}</span>
                     <span v-if="formData.vasa">Vasa-ID</span>
-                    <span v-if="formData.vasa" class="font-medium">{{formData.vasa}}</span>
+                    <span v-if="formData.vasa" class="font-medium">{{ formData.vasa }}</span>
                     <span>Sträcka</span>
-                    <span class="font-medium">{{translateDistance(formData.distance)}}</span>
-                    <span>Klass</span><span class="font-medium">{{formData.class}}</span>
+                    <span class="font-medium">{{ translateDistance(formData.distance) }}</span>
+                    <span>Klass</span><span class="font-medium">{{ formData.class }}</span>
                   </div>
                   <p class="mt-4">
-                    <span v-if="formData.paymethod === 'bg'">Betala via Bankgiro: <span
+                    <span v-if="formData.paymethod === 'pg'">Betala via PlusGirot: <span
                         class="font-medium">780801-7</span></span>
                     <span v-else>Swisha betalning till nr: <span class="font-medium">123 541 1848</span></span>
                   </p>

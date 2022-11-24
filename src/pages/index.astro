@@ -3,10 +3,11 @@
 import RaceLayout from '../layouts/RaceLayout.astro';
 import FeaturedArticles from '../components/FeaturedArticles.astro';
 import TopShape from '../components/TopShape.astro';
+import RaceTeaser from '../components/RaceTeaser.astro';
 
 const posts = await Astro.glob('./blog/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
 ---
-<RaceLayout footer="bg-slate-800" title="Umeloppet">
+<RaceLayout footer="bg-slate-800" title="Skidveteranerna i västerbotten">
   <div class="relative">
     <section class="hero-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6 flex justify-center items-center">
       <div class="bg-slate-200 h-40 w-40 sm:h-60 sm:w-60 rounded-full border-4 border-black">
@@ -15,9 +16,11 @@ const posts = await Astro.glob('./blog/*.md'); // returns an array of posts that
      
     </section>
     
-    <TopShape classes="absolute bottom-0 text-slate-800"></TopShape>
+    <TopShape classes="absolute bottom-0 text-slate-200"></TopShape>
   </div>
   
+  <RaceTeaser></RaceTeaser>
+
   <section class="bg-slate-800">
     <div class="max-w-5xl mx-auto px-6 pt-1 pb-8 text-white">
       <h2 class="text-4xl font-bold text-center uppercase my-6" >Senaste nyheterna</h2>

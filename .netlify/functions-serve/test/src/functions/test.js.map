@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../../../../../dev/fun/vb-ski-astro/functions/test.ts"],
-  "sourceRoot": "C:/Users/bjorn/AppData/Local/Temp/tmp-2056-eswEA4WvO45P",
+  "sourceRoot": "C:/Users/bjorn/AppData/Local/Temp/tmp-8376-jzEyMXnPAMii",
   "sourcesContent": ["import { Handler } from '@netlify/functions'\r\n\r\nconst handler: Handler = async (event, context) => {\r\n  return {\r\n    statusCode: 200,\r\n    body: JSON.stringify({ message: \"Hello World\" })\r\n  }\r\n}\r\n\r\nexport { handler }"],
   "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAEA,IAAM,UAAmB,OAAO,OAAO,YAAY;AACjD,SAAO;AAAA,IACL,YAAY;AAAA,IACZ,MAAM,KAAK,UAAU,EAAE,SAAS,cAAc,CAAC;AAAA,EACjD;AACF;",
   "names": []

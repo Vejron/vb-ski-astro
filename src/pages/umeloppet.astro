@@ -17,16 +17,22 @@ import BottomShape from '../components/BottomShape.astro';
       <div class="bg-slate-200 h-40 w-40 sm:h-60 sm:w-60 rounded-full border-4 border-black">
         <img src="/assets/veteranerna-logga.svg" class="w-full h-full" alt="ICA Nära Hissjö handel">
       </div>
-      <p class="font-bold absolute text-5xl text-purple-600 sm:text-8xl text-outline">UMELOPPET</p>
+      <p class="font-bold absolute transform -translate-y-5 text-5xl text-purple-600 sm:text-8xl text-outline">UMELOPPET</p>
+      <div class="flex gap-2 sm:gap-4 sm:text-lg text-black font-bold">
+        <a href="#anmalan" class="transition-colors hover:text-purple-600 hover:bg-white bg-pink-400 px-3 py-1 rounded-full">Anmälan</a>
+        <a href="#information" class="transition-colors hover:text-purple-600 hover:bg-white bg-pink-400 px-3 py-1 rounded-full">Information</a>
+        <a href="#sponsors" class="transition-colors hover:text-purple-600 hover:bg-white bg-pink-400 px-3 py-1 rounded-full">Sponsorer</a>
+      </div>
+      
     </section>
     <TopShape classes="absolute bottom-0 text-slate-100"></TopShape>
   </div>
   
   <div class="bg-slate-100">
     <article class="max-w-5xl mx-auto px-6 py-1">
-    <h2 class="text-4xl font-bold text-center uppercase my-6">Välkommen till vinterns stora upplevelse</h2>
+    <h2 class="text-4xl font-bold sm:text-center uppercase my-6">Välkommen till vinterns stora upplevelse</h2>
     <div class="max-w-3xl mx-auto">
-    <p class="text-center mb-7">
+    <p class="sm:text-center mb-7">
       <span class="font-bold">Söndag den 5:e Februari 2023.</span> På åkern i anslutning till Forslundagymnasiet, går starten för det 13:e Umeloppet. 
        40 km seedningsgrundande för Vasaloppet, 
       20 km seedningsgrundande för Tjejvasan och 5 km parasportklass (Tävlande skall ha ledsagare).
@@ -55,47 +61,54 @@ import BottomShape from '../components/BottomShape.astro';
   </article>
   </div>
   
-  <article class="bg-slate-200 relative">
+  <article id="anmalan" class="bg-slate-200 relative">
     <Anmalan client:idle></Anmalan>
   </article>
 
-  <article class="py-10 relative">
+  <article id="information" class="pt-10 relative">
     <BottomShape classes="absolute top-0 text-slate-200"></BottomShape>
-    <h2 class="text-4xl font-bold text-center uppercase my-6">Information om loppen</h2>
-    <div class="max-w-3xl mx-auto">
-      <p>Klassisk teknik gäller, kontroll sker.
-        Spårsträckning enligt karta.
-        Varvlopp: 40 km åks 2 varv. 20 km 1 varv. 5 km: skyltat mot mål.</p>
-        <p>Maxtid: Rep dras vid varvning kl 13.30 och efter 27 km kl 14.30.</p>
-        <p>
-           Nr lappar/chip lördag: Tävlingsexp., Forslunda Gymnasiet kl 13.00-15.00.
-   Nr lappar/chip söndag: Tävlingsexp., Forslunda Gymnasiet kl 8.30-10.30.
-   Vätska per varv efter 7 km, 17 km och vid varvning. Vitargo sportdryck, vatten.
+    <div class="px-6">
+    <h2 class="text-4xl font-bold sm:text-center uppercase my-6">Information om loppet</h2>
+    <div class="max-w-3xl mx-auto space-y-4">
+      <div class="p-4 bg-purple-200 rounded-lg">
+        <h3 class="text-2xl font-semibold mb-2">Innan Loppet</h3>
+        <p class="space-y-1 list-disc list-inside text-gray-800 text-lg">
+          Nummerlappar och chip delas ut vid tävlingsexpeditionen, Forslunda Gymnasiet. 
+          På lördag kl 13:00 till 15:00 och på söndag 8:30 till 10:30.
         </p>
-
-        <p>
-          Priser till de 3 första damer/herrar i mål 40 km, damsegrare 20 km, segrare 5 km.
-  Prisutdelning sker löpande när prispallen är klar.
-  Utlottnings priser bland genomförda 40/20/5 km., lista anslås vid entré och utanför
-  fikarummet och pris lämnas mot uppvisande av nr lapp.
+      </div>
+      <div class="p-4 bg-purple-200 rounded-lg">
+        <h3 class="text-2xl font-semibold mb-2">Under Loppet</h3>
+        <ul class="space-y-2 list-disc list-inside text-gray-800 text-lg">
+          <li>Gemensam start alla klasser kl <strong class="font-bold">11:00</strong> på åkern nedanför Forslunda Gymnasiet</li>
+          <li><strong class="underline font-bold">Klassisk teknik gäller</strong>, kontroll sker</li>
+          <li>Varvlopp: 40 km åks 2 varv. 20 km 1 varv. 5 km: skyltat mot mål</li>
+          <li>Spårsträckning enligt karta</li>
+          <li>Vätska (Vitargo) per varv vid 7 km, 17 km och vid varvning</li>
+          <li>Maxtid: Rep dras vid varvning kl 13.30 och efter 27 km kl 14.30</li>
+        </ul>
+      </div>
+      <div class="p-4 bg-purple-200 rounded-lg">
+        <h3 class="text-2xl font-semibold mb-2">Efter Loppet</h3>
+        <p class="space-y-1 list-disc list-inside text-gray-800 text-lg">
+          Priser till de 3 första damer/herrar i mål på 40 km, damsegrare 20 km, segrare 5 km.
+          Prisutdelning sker löpande när prispallen är klar. Utlottningspriser bland genomförda 40/20/5 km lopp.
+          Lista anslås vid entré och utanför fikarummet och pris lämnas mot uppvisande av nummerlapp.
         </p>
+      </div>
+      
     </div>
+  </div>
   </article>
 
   <article class="py-10 relative">
-  
-  <h2 class="text-4xl font-bold text-center uppercase my-6">Hitta hit & karta</h2>
-    <div class="max-w-5xl mx-auto px-6 mb-8 flex gap-4 flex-col md:flex-row place-items-start">
-    <div>
-      <p class=" max-w-xs">Loppet har start och mål på åkern nedanför Forslundagymnasiet. Parkeringsmöjligheter finns men vi ser helst att ni skidar hit. </p>
-      <p class="">Det finns möjligt till sportdryck och lite tilltug på på tre stationer utefter banan . </p>
-    </div>
-      
-      <TrackMap client:visible></TrackMap>
+  <h2 class="text-4xl font-bold text-center uppercase my-6">Karta över spåret</h2>
+    <div class="max-w-4xl mx-auto px-6 mb-8">      
+      <TrackMap class="h-[60vh]" client:visible></TrackMap>
     </div>
   </article>
 
-  <article class="mb-10">
+  <article id="sponsors" class="mb-10">
     <h2 class="text-4xl font-bold text-center uppercase my-6">Våra sponsorer</h2>
     <div class="max-w-5xl mx-auto mb-8 grid grid-cols-3 place-items-center">
       <img src="/assets/ica-nara.png" class="max-h-48 lg:max-h-72" alt="ICA Nära Hissjö handel">

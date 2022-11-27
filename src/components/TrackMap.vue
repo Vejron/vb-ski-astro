@@ -1,5 +1,5 @@
 <template>
-  <div id="mainMapContainer" class="w-full h-72"></div>
+  <div id="mainMapContainer" class="w-full"></div>
 </template>
 
 <script setup lang="ts">
@@ -46,7 +46,7 @@ const setupLeafletMap = (location: any, L) => {
     })
     .addTo(map);
   L.geoJSON(path).addTo(map);
-  
+
 
   const fluid1 = [63.862985, 20.148497];
   const fluid2 = [63.886115, 20.152617];

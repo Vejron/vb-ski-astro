@@ -1,7 +1,7 @@
 <template>
   <div class="max-w-4xl mx-auto py-8 px-6">
-    <h2 class="font-bold text-center text-4xl uppercase mb-4">Anmäl dig här</h2>
-    <p class="text-center font-semibold text-lg mb-4">
+    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmäl dig här</h2>
+    <p class="sm:text-center font-semibold text-lg mb-4">
       Obs! Max 400 startande och sista anmälningstid 1:a Februari kl 24:00
     </p>
     <form @submit.prevent="submitForm" class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6">
@@ -91,7 +91,7 @@
                 <div v-else class="mt-2">
                   <p class="text-gray-700 mb-2">
                     Dubbelkolla gärna dina uppgifter innan du slutför anmälan. Genom att slutföra anmälan ger du oss
-                    tillstånd att behandla dina personuppgifter i enlighet med vår policy. bla bla GDPR och sånt
+                    tillstånd att publicera dina uppgifter i resultatlistan
                   </p>
                   <div class="final-grid">
                     <span>Namn</span><span class="font-medium">{{ formData.name }}</span>
@@ -105,9 +105,12 @@
                     <span>Klass</span><span class="font-medium">{{ formData.class }}</span>
                   </div>
                   <p class="mt-4">
-                    <span v-if="formData.paymethod === 'pg'">Betala via PlusGirot: <span
-                        class="font-medium">780801-7</span></span>
-                    <span v-else>Swisha betalning till nr: <span class="font-medium">123 541 1848</span></span>
+                  <p v-if="formData.distance === 'long'">Anmälningsavgift 400 kr</p>
+                  <p v-if="formData.distance === 'short'">Anmälningsavgift 300 kr</p>
+                  <p v-if="formData.distance === 'para'">Anmälningsavgift 100 kr</p>
+                  <span v-if="formData.paymethod === 'pg'">Betala via PlusGirot: <span
+                      class="font-medium">780801-7</span></span>
+                  <span v-else>Swisha betalning till nr: <span class="font-medium">123 541 1848</span></span>
                   </p>
                   <div class="mt-4 flex justify-end gap-4">
                     <button type="button"
@@ -148,6 +151,7 @@ const isOpen = ref(false)
 const submitForm = async () => {
   if (state.value !== 'submitting') {
     isOpen.value = true
+    state.value = 'initial'
   }
 };
 const clickOutside = () => {

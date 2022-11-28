@@ -1,12 +1,13 @@
 ---
 import TopShape from '../components/TopShape.astro';
 import "../styles/global.css";
-const {title, footer} = Astro.props;
-console.log(Astro.props)
+const {title, description, footer} = Astro.props;
 ---
 <html lang="sv">
   <head>
     <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />

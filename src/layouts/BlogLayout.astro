@@ -8,6 +8,8 @@ const { content } = Astro.props;
 <html lang="sv">
   <head>
     <title>{content.title}</title>
+    <meta name="title" content={content.title} />
+    <meta name="description" content={content.description} />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />

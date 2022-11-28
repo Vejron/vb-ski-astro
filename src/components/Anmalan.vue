@@ -78,7 +78,7 @@
                 <div v-if="state === 'done'" class="h-44 mt-2 flex flex-col justify-between">
                   <p class="text-gray-700 mb-2">
                     Tack. Vi har nu mottagit din anmälan. En bekräftelse skickas också till
-                    den e-post du uppgav. Glöm inte att betala innan ??
+                    den e-post du uppgav. Glöm inte att betala innan så fort som möjligt
                   </p>
                   <div class="mt-4 flex justify-end gap-4">
                     <button type="button"

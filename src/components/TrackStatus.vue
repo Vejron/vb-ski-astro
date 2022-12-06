@@ -17,11 +17,8 @@
             <Loader show simple></Loader>
           </div>
         </div>
-
       </transition>
     </div>
-
-
   </div>
 
 </template>

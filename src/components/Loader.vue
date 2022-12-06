@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { reactive, computed, ref } from "vue";
 const props = defineProps({
   show: Boolean,
-});
-
-
+  simple: Boolean,
+})
 </script>
 
 <template>
   <transition name="fade">
-    <div v-if="show" class="bg-black/20 absolute p-[30%] z-50 inset-0 flex justify-center items-center">
+    <div v-if="show" :class="[simple ? '' : 'bg-black/20 p-[30%]']"
+      class="absolute z-50 inset-0 flex justify-center items-center">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <circle class="ring-track" fill="transparent" stroke-width="6px" stroke="#9c9c9c30" cx="50" cy="50" r="44" />
         <circle class="loader-ring" fill="transparent" stroke-width="6px" stroke-dashoffset="276.460"

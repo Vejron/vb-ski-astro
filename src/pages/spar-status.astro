@@ -1,0 +1,25 @@
+---
+
+import RaceLayout from '../layouts/RaceLayout.astro';
+import TopShape from '../components/TopShape.astro';
+import TrackStatus from '../components/TrackStatus.vue';
+
+const posts = await Astro.glob('./blog/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
+---
+<RaceLayout footer="bg-slate-800" title="Spårstatus" description="När har skidpår i umeå preparerats">
+  <div class="relative">
+    <section class="track-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6 flex justify-center items-center">
+      <div class="bg-slate-200 h-40 w-40 sm:h-60 sm:w-60 rounded-full border-4 border-black">
+        <img src="/assets/veteranerna-logga.svg" class="w-full h-full" alt="skidveteranerna logotyp">
+      </div>
+      <h1 class="font-bold absolute transform -translate-y-2 text-5xl text-purple-600 sm:text-8xl text-outline">SPÅRSTATUS</h1>
+    </section>
+    
+    <TopShape classes="absolute bottom-0 text-slate-800"></TopShape>
+  </div>
+  <section class="bg-slate-800">
+    <div class="max-w-7xl mx-auto px-6 pt-1 pb-8 text-white">
+      <TrackStatus client:idle></TrackStatus>
+    </div>
+  </section>
+</RaceLayout>

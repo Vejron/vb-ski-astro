@@ -46,6 +46,22 @@ html {
   );
 }
 
+.track-grid {
+  background-image: url(/assets/spar.webp);
+  background-position-x: 55%;
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  //background-size: cover;
+  mask-image: radial-gradient(
+    circle,
+    #333,
+    #333 50%,
+    rgba(0, 0, 0, 0.1) 80%,
+    transparent 85%
+  );
+}
+
 .map-pin .inner-pin {
   @apply absolute font-sans px-4 text-xl font-semibold;
   text-shadow: rgba(255, 68, 0, 0.9) 0px 0px 13px,
@@ -179,4 +195,14 @@ html {
     transform: translate(0);
     opacity: 1;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .6s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }

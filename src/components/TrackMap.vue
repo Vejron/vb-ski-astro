@@ -6,7 +6,6 @@
 import { PropType, onMounted, onUnmounted } from "vue";
 import "leaflet/dist/leaflet.css";
 import path from "../assets/path.json";
-//import { getForecast } from "~~/services/smhi.service";
 
 const props = defineProps({
   data: Object as PropType<{

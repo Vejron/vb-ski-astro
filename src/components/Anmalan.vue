@@ -41,11 +41,11 @@
           <legend class="font-medium mb-1">Jag betalar via:</legend>
           <div class="flex items-center">
             <input class="transition-all" type="radio" v-model="formData.paymethod" id="id-swish" value="swish">
-            <label class="ml-2" for="id-swish">Swish</label>
+            <label class="ml-2" for="id-swish">Swish (123 541 1848)</label>
           </div>
           <div class="flex items-center">
             <input class="transition-all" type="radio" v-model="formData.paymethod" id="id-bg" value="pg">
-            <label class="ml-2" for="id-bg">PlusGirot</label>
+            <label class="ml-2" for="id-bg">PlusGirot (780801-7)</label>
           </div>
 
         </fieldset>

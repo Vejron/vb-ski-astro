@@ -90,10 +90,13 @@ import BottomShape from '../components/BottomShape.astro';
       </div>
       <div class="p-4 bg-purple-200 rounded-lg">
         <h3 class="text-2xl font-semibold mb-2">Efter Loppet</h3>
-        <p class="space-y-1 list-disc list-inside text-gray-800 text-lg">
+        <p class="text-gray-800 text-lg">
           Priser till de 3 första damer/herrar i mål på 40 km, damsegrare 20 km, segrare 5 km.
           Prisutdelning sker löpande när prispallen är klar. Utlottningspriser bland genomförda 40/20/5 km lopp.
           Lista anslås vid entré och utanför fikarummet och pris lämnas mot uppvisande av nummerlapp.
+        </p>
+        <p class="text-gray-800 text-lg mt-2">
+          Gratis fika för tävlande. Finns även fika för övriga till en liten kostnad.
         </p>
       </div>
       
@@ -104,7 +107,7 @@ import BottomShape from '../components/BottomShape.astro';
   <article class="py-10 relative">
   <h2 class="text-4xl font-bold text-center uppercase my-6">Karta över spåret</h2>
     <div class="max-w-4xl mx-auto px-6 mb-8">      
-      <TrackMap class="h-[60vh]" client:visible></TrackMap>
+      <TrackMap class="h-[80vh]" client:visible></TrackMap>
     </div>
   </article>
 

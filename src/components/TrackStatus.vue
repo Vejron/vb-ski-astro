@@ -3,8 +3,8 @@
     <h2 class="text-4xl font-bold text-white sm:text-center uppercase py-6">Spårstatus i umeåområdet</h2>
 
     <p class="sm:text-center mb-7 mx-auto max-w-4xl">
-      Vi rekomenderar starkt att alla deltagare i <a class="underline hover:text-purple-500"
-        href="/umeloppet">Umeloppet</a> åtminstonde åker ett
+      Vi rekommenderar starkt att alla deltagare i <a class="underline hover:text-purple-500"
+        href="/umeloppet">Umeloppet</a> åtminstone åker ett
       par mil innan start. Här presenterar vi aktuell spårstatus för de spår som rapporterar in status till Umeå kommuns
       anläggningsregister
     </p>

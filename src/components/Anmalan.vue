@@ -2,7 +2,7 @@
   <div v-if="registerOverdue" class="max-w-4xl mx-auto py-8 px-6">
     <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmäl är nu stängd för 2023 års lopp</h2>
     <p class="sm:text-center font-semibold text-lg mb-4">
-      Sista anmälningstid var 1:a Februari kl 24:00 och vi tar inga efteranmälningar.
+      Vi har nått max antal startande.
     </p>
   </div>
   <div v-else class="max-w-4xl mx-auto py-8 px-6">
@@ -154,7 +154,8 @@ import Loader from './Loader.vue'
 
 const now = useNow()
 const registerOverdue = computed(() => {
-  return now.value > new Date(2023, 1, 1, 23, 59, 59)
+  return true
+  //return now.value > new Date(2023, 1, 1, 23, 59, 59)
 })
 
 const state = ref<'initial' | 'submitting' | 'done'>('initial')

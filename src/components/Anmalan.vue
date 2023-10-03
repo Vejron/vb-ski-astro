@@ -1,8 +1,12 @@
 <template>
   <div v-if="registerOverdue" class="max-w-4xl mx-auto py-8 px-6">
-    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmäl är nu stängd för 2023 års lopp</h2>
+    <!-- <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmäl är nu stängd för 2023 års lopp</h2>
     <p class="sm:text-center font-semibold text-lg mb-4">
       Vi har nått max antal startande.
+    </p> -->
+    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmälan för 2024 års lopp</h2>
+    <p class="sm:text-center font-semibold text-lg mb-4">
+      Öppnar här den 15:e december.
     </p>
   </div>
   <div v-else class="max-w-4xl mx-auto py-8 px-6">

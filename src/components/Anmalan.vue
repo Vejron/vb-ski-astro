@@ -239,9 +239,7 @@ const distances = [
       'D65',
       'D70',
       'D75',
-      'D80',
-      'D85',
-      'D90',
+      'D80+',
       'H21',
       'H35',
       'H40',
@@ -252,22 +250,12 @@ const distances = [
       'H65',
       'H70',
       'H75',
-      'H80',
-      'H85',
-      'H90',
+      'H80+',
     ]
   },
   {
     value: 'short',
     key: '20 km',
-    classes: [
-      'Herrar Motion',
-      'Damer Motion',
-    ]
-  },
-  {
-    value: 'para',
-    key: '5 km Paraklass',
     classes: [
       'Herrar Motion',
       'Damer Motion',

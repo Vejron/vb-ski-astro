@@ -88,7 +88,7 @@
                 <div v-if="state === 'done'" class="h-44 mt-2 flex flex-col justify-between">
                   <p class="text-gray-700 mb-2">
                     Tack. Vi har nu mottagit din anmälan. En bekräftelse skickas också till
-                    den e-post du uppgav. Glöm inte att betala innan så fort som möjligt
+                    den e-post du uppgav. Glöm inte att betala så fort som möjligt
                   </p>
                   <div class="mt-4 flex justify-end gap-4">
                     <button type="button"
@@ -158,8 +158,7 @@ import Loader from './Loader.vue'
 
 const now = useNow()
 const registerOverdue = computed(() => {
-  return true
-  //return now.value > new Date(2023, 1, 1, 23, 59, 59)
+  return now.value > new Date(2024, 1, 1, 23, 59, 59)
 })
 
 const state = ref<'initial' | 'submitting' | 'done'>('initial')

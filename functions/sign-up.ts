@@ -3,6 +3,7 @@ import { createTransport } from 'nodemailer'
 import { Handler } from '@netlify/functions'
 
 const ReceiverMail = 'trude.hietha@umea.riksnet.se'
+//const ReceiverMail = 'bjorn.yttergren@gmail.com'
 interface Anmalan {
   name: string
   email: string

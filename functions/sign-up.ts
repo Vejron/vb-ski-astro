@@ -87,8 +87,8 @@ const formatAnmalan = (data: Anmalan) => {
 
 const formatVerify = (data: Anmalan) => {
   return `
-  <p>Här kommer en bekräftelse på din anmälan till Umeloppet 2023.<br>
-  Kom ihåg att betala avgiften så snart som möjligt men senast 1:a Februari 2023.<br>
+  <p>Här kommer en bekräftelse på din anmälan till Umeloppet 2024.<br>
+  Kom ihåg att betala avgiften så snart som möjligt men senast 31:a januari 2024.<br>
   ${getCost(data.distance)}:- till swish: 123 541 1848 eller pg: 780801-7</p>
   <p>Detta är ett automatgenererat mail och går inte att svara på</p>
   <table>
@@ -131,7 +131,7 @@ const handler: Handler = async (event, context) => {
       const anmalan = {
         from: 'anmalan@skidveteraner.se',
         to: ReceiverMail,
-        subject: '🔥Anmälan för ' + bodyJSON.name + ' till Umeloppet 2023',
+        subject: '🔥Anmälan för ' + bodyJSON.name + ' till Umeloppet 2024',
         text: `Din läsare stödjer inte html... bummer`,
         html: formatAnmalan(bodyJSON)
       };
@@ -142,7 +142,7 @@ const handler: Handler = async (event, context) => {
       const verify = {
         from: 'anmalan@skidveteraner.se',
         to: bodyJSON.email,
-        subject: '🔥Din anmälan till Umeloppet 2023',
+        subject: '🔥Din anmälan till Umeloppet 2024',
         text: `Din läsare stödjer inte html... bummer`,
         html: formatVerify(bodyJSON)
       }

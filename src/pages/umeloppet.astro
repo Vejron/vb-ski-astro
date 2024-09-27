@@ -1,47 +1,77 @@
 ---
-
-import LoppetLayout from '../layouts/LoppetLayout.astro';
-import Anmalan from '../components/Anmalan.vue';
-import TrackMap from '../components/TrackMap.vue';
-import TopShape from '../components/TopShape.astro';
-import BottomShape from '../components/BottomShape.astro';
+import LoppetLayout from "../layouts/LoppetLayout.astro";
+import Anmalan from "../components/Anmalan.vue";
+import TrackMap from "../components/TrackMap.vue";
+import TopShape from "../components/TopShape.astro";
+import BottomShape from "../components/BottomShape.astro";
 // Component Imports
 // You can import components from any supported Framework here!
 
 // Remember: Astro component scripts log to the CLI
 //console.log(JSON.stringify(stories));
 ---
-<LoppetLayout footer="bg-white" title="Umeloppet" description="Umeloppet. Seedningsgrundande skidlopp i Umeå">
+
+<LoppetLayout
+  footer="bg-white"
+  title="Umeloppet"
+  description="Umeloppet. Seedningsgrundande skidlopp i Umeå"
+>
   <div class="relative">
-    <section class="map-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6 flex flex-col justify-center items-center">
-      <div class="bg-slate-200 h-40 w-40 sm:h-60 sm:w-60 rounded-full border-4 border-black">
-        <img src="/assets/veteranerna-logga.svg" class="w-full h-full" alt="skidveteranernas logga">
+    <section
+      class="map-grid h-72 sm:h-[500px] max-w-5xl mx-auto px-6 flex flex-col justify-center items-center"
+    >
+      <div
+        class="bg-slate-200 h-40 w-40 sm:h-60 sm:w-60 rounded-full border-4 border-black"
+      >
+        <img
+          src="/assets/veteranerna-logga.svg"
+          class="w-full h-full"
+          alt="skidveteranernas logga"
+        />
       </div>
-      <h1 class="font-bold absolute transform -translate-y-5 text-5xl text-purple-600 sm:text-8xl text-outline">UMELOPPET</h1>
-      <div class="flex gap-2 sm:gap-4 sm:text-lg text-black font-bold pt-1 sm:pt-4">
-        <a href="#information" class="transition-colors hover:text-purple-600 hover:bg-white bg-pink-400 px-3 py-1 rounded-full">Information</a>
-        <a href="/files/resultat_2024_02_04.pdf" target="_blank" class="transition-colors hover:text-purple-600 hover:bg-white bg-purple-400 px-3 py-1 rounded-full">Resultat 2024</a>
+      <h1
+        class="font-bold absolute transform -translate-y-5 text-5xl text-purple-600 sm:text-8xl text-outline"
+      >
+        UMELOPPET
+      </h1>
+      <div
+        class="flex gap-2 sm:gap-4 sm:text-lg text-black font-bold pt-1 sm:pt-4"
+      >
+        <a
+          href="#information"
+          class="transition-colors hover:text-purple-600 hover:bg-white bg-pink-400 px-3 py-1 rounded-full"
+          >Information</a
+        >
+        <a
+          href="/files/resultat_2024_02_04.pdf"
+          target="_blank"
+          class="transition-colors hover:text-purple-600 hover:bg-white bg-purple-400 px-3 py-1 rounded-full"
+          >Resultat 2024</a
+        >
         <!--a href="/files/pm-umeloppet-2024.pdf" target="_blank" class="transition-colors hover:text-purple-600 hover:bg-white bg-purple-400 px-3 py-1 rounded-full">PM</a-->
-        <a href="#sponsors" class="transition-colors hover:text-purple-600 hover:bg-white bg-pink-400 px-3 py-1 rounded-full">Sponsorer</a>
+        <a
+          href="#sponsors"
+          class="transition-colors hover:text-purple-600 hover:bg-white bg-pink-400 px-3 py-1 rounded-full"
+          >Sponsorer</a
+        >
       </div>
-      
     </section>
-    <TopShape classes="absolute bottom-0 text-slate-100"></TopShape>
+    <TopShape classes="absolute bottom-0 text-slate-100" />
   </div>
-  
+
   <div class="bg-slate-100">
     <article class="max-w-5xl mx-auto px-6 py-1">
-    
-    <h2 class="text-4xl font-bold sm:text-center uppercase my-6">TACK</h2>
-    <p class="text-2xl font-bold sm:text-center my-6">
-      Vi i Västerbottens Skidveteraner vill skicka ett stort tack till alla skidåkare som gjorde Umeloppet 2024 till en stor succé.
-      Vi vill också tacka alla funktionärer som ställde upp, utan er hade det inte varit möjligt genomföra arrangemanget.
-      Ett tack till alla sponsorer, åskådare och vädret som åter igen levererade.
-      Stort stort tack till alla och välkommen åter 2025!
-    </p>
-    
-    
-  <!--div class="max-w-3xl mx-auto">
+      <h2 class="text-4xl font-bold sm:text-center uppercase my-6">TACK</h2>
+      <p class="text-2xl font-bold sm:text-center my-6">
+        Vi i Västerbottens Skidveteraner vill skicka ett stort tack till alla
+        skidåkare som gjorde Umeloppet 2024 till en stor succé. Vi vill också
+        tacka alla funktionärer som ställde upp, utan er hade det inte varit
+        möjligt genomföra arrangemanget. Ett tack till alla sponsorer, åskådare
+        och vädret som åter igen levererade. Stort stort tack till alla och
+        välkommen åter 2025!
+      </p>
+
+      <!--div class="max-w-3xl mx-auto">
     <p class="sm:text-center mb-7">
       <span class="font-bold">Söndag den 4:e Februari 2024.</span> På åkern i anslutning till Forslundagymnasiet, går starten för det 14:e Umeloppet. 
        40 km seedningsgrundande för Vasaloppet och 20 km seedningsgrundande för Tjejvasan.
@@ -64,101 +94,163 @@ import BottomShape from '../components/BottomShape.astro';
       </div>
     </div>
   </div -->
-  </article>
+    </article>
   </div>
-  
+
   <article id="anmalan" class="bg-slate-200 relative">
-    <Anmalan client:idle></Anmalan>
+    <Anmalan client:idle />
   </article>
 
   <article id="information" class="pt-10 relative">
-    <BottomShape classes="absolute top-0 text-slate-200"></BottomShape>
+    <BottomShape classes="absolute top-0 text-slate-200" />
     <div class="px-6">
-    <h2 class="text-4xl font-bold sm:text-center uppercase my-6">Information om loppet</h2>
-    <div class="max-w-3xl mx-auto space-y-4">
-      <div class="p-4 bg-purple-200 rounded-lg">
-        <h3 class="text-2xl font-semibold mb-3">Innan Loppet</h3>
-        <p class="text-gray-800 text-lg mb-3">
-          Dubbelkolla gärna att du är med på <a class="underline hover:font-semibold" href="/files/Startlista_klassvis_2024.pdf" target="_blank">startlistan</a>.
-        </p>
-        <!-- p class="text-gray-800 text-lg mb-3">
+      <h2 class="text-4xl font-bold sm:text-center uppercase my-6">
+        Information om loppet
+      </h2>
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="p-4 bg-purple-200 rounded-lg">
+          <h3 class="text-2xl font-semibold mb-3">Innan Loppet</h3>
+          <p class="text-gray-800 text-lg mb-3">
+            Dubbelkolla gärna att du är med på <a
+              class="underline hover:font-semibold"
+              href="/files/Startlista_klassvis_2024.pdf"
+              target="_blank">startlistan</a
+            >.
+          </p>
+          <!-- p class="text-gray-800 text-lg mb-3">
           Dubbelkolla gärna att du är med på <strong>startlistan</strong> (Publiceras efter sista anmälningsdag).
         </p -->
-        <p class="text-gray-800 text-lg mb-3"><strong>OBS!</strong> Fr o m i år åker alla på Fluorfria skidor<br>Svenska Skidförbundet kan oannonserat komma och kolla skidorna.</p>
-        <p class="text-gray-800 text-lg mb-3">
-          <strong>Nummerlappar och chip</strong> delas ut vid tävlingsexpeditionen, Forslunda Gymnasiet. 
-          På lördag kl 13:00 till 16:00 och på söndag 8:30 till 10:30.
-        </p>
+          <p class="text-gray-800 text-lg mb-3">
+            <strong>OBS!</strong> Fr o m i år åker alla på Fluorfria skidor<br
+            />Svenska Skidförbundet kan oannonserat komma och kolla skidorna.
+          </p>
+          <p class="text-gray-800 text-lg mb-3">
+            <strong>Nummerlappar och chip</strong> delas ut vid tävlingsexpeditionen,
+            Forslunda Gymnasiet. På lördag kl 13:00 till 16:00 och på söndag 8:30
+            till 10:30.
+          </p>
 
-        
-        <p class="text-gray-800 text-lg mb-3">
-          <strong>Parkering</strong> utmed 363:an mot Umeå, du ser skylt när du svänger in på Forslundaskolan. <strong>OBS!</strong> Ingen parkering nere vid startområdet.
-        </p>
+          <p class="text-gray-800 text-lg mb-3">
+            <strong>Parkering</strong> utmed 363:an mot Umeå, du ser skylt när du
+            svänger in på Forslundaskolan. <strong>OBS!</strong> Ingen parkering
+            nere vid startområdet.
+          </p>
 
-        <p class="text-gray-800 text-lg mb-3">
-          <strong>Nytt för i år</strong>. Det kommer finnas en gångstig från skolan till starten. Se skyltning.
-        </p>
+          <p class="text-gray-800 text-lg mb-3">
+            <strong>Nytt för i år</strong>. Det kommer finnas en gångstig från
+            skolan till starten. Se skyltning.
+          </p>
 
-        <p class="text-gray-800 text-lg mb-3">
-          Vid starten körs ett extra varv på startområdet innan ni beger er ut på banan.
-          Vi ser gärna att ni ställer er i rätt startled då det kan bli trångt
-        </p>
-          <ul class="space-y-2 list-disc list-inside text-gray-800 text-lg mb-4">
+          <p class="text-gray-800 text-lg mb-3">
+            Vid starten körs ett extra varv på startområdet innan ni beger er ut
+            på banan. Vi ser gärna att ni ställer er i rätt startled då det kan
+            bli trångt
+          </p>
+          <ul
+            class="space-y-2 list-disc list-inside text-gray-800 text-lg mb-4"
+          >
             <li>Led 1 Elit Damer/herrar</li>
             <li>Led 2 Mindre snabba än elit</li>
             <li>Led 3 Ni som vill ta det lite lugnare</li>
           </ul>
-        
-        <img src="/assets/startomrode.svg" class="w-full h-full" alt="skiss av startområde">
+
+          <img
+            src="/assets/startomrode.svg"
+            class="w-full h-full"
+            alt="skiss av startområde"
+          />
+        </div>
+        <div class="p-4 bg-purple-200 rounded-lg">
+          <h3 class="text-2xl font-semibold mb-2">Under Loppet</h3>
+          <ul class="space-y-2 list-disc list-inside text-gray-800 text-lg">
+            <li>
+              Gemensam start alla klasser kl <strong class="font-bold"
+                >11:00</strong
+              > på åkern nedanför Forslunda Gymnasiet
+            </li>
+            <li>
+              <strong class="underline font-bold">Klassisk teknik gäller</strong
+              >, kontroll sker
+            </li>
+            <li>Varvlopp: 40 km åks 2 varv. 20 km 1 varv.</li>
+            <li>Spårsträckning enligt karta</li>
+            <li>
+              Vätska <a
+                class="font-semibold text-blue-600 hover:underline hover:font-bold"
+                href="https://umarasports.com/butik/under-aktivitet/u-sport-108#model=320"
+                >(Umara U-sport)</a
+              > per varv vid 7 km, 17 km och vid varvning
+            </li>
+            <li>
+              Maxtid: Rep dras vid varvning kl 13.20 och efter 27 km kl 14.10
+            </li>
+          </ul>
+        </div>
+        <div class="p-4 bg-purple-200 rounded-lg">
+          <h3 class="text-2xl font-semibold mb-2">Efter Loppet</h3>
+          <p class="text-gray-800 text-lg mb-2">
+            Priser till de 3 första damer/herrar i mål på 40 km och till de 3
+            första damer i mål på 20 km. Prisutdelning 20 km ca kl 13.00 och för
+            40 km ca kl 14.00.<br />
+            Plats: Fikarummet.
+          </p>
+          <p class="text-gray-800 text-lg">
+            Utlottningspriser bland genomförda 40/20 km lopp. Lista anslås vid
+            entré och utanför fikarummet och pris lämnas mot uppvisande av
+            nummerlapp.
+          </p>
+          <p class="text-gray-800 text-lg mt-2">
+            Gratis fika för tävlande. Finns även fika för övriga till en liten
+            kostnad.
+          </p>
+          <p class="text-gray-800 text-lg mt-2">
+            <strong class="font-bold"
+              >Glöm inte att lämna tillbaka chipet efter målgång</strong
+            >. Det kommer finnas personer som tar emot dem vid målet.
+            <br /><strong>OBS!</strong> Om ni tvingas bryta måste chip och nummerlapp
+            återlämnas till tävlingsexp och meddela personerna detta!
+          </p>
+        </div>
       </div>
-      <div class="p-4 bg-purple-200 rounded-lg">
-        <h3 class="text-2xl font-semibold mb-2">Under Loppet</h3>
-        <ul class="space-y-2 list-disc list-inside text-gray-800 text-lg">
-          <li>Gemensam start alla klasser kl <strong class="font-bold">11:00</strong> på åkern nedanför Forslunda Gymnasiet</li>
-          <li><strong class="underline font-bold">Klassisk teknik gäller</strong>, kontroll sker</li>
-          <li>Varvlopp: 40 km åks 2 varv. 20 km 1 varv.</li>
-          <li>Spårsträckning enligt karta</li>
-          <li>Vätska <a class="font-semibold text-blue-600 hover:underline hover:font-bold" href="https://umarasports.com/butik/under-aktivitet/u-sport-108#model=320">(Umara U-sport)</a> per varv vid 7 km, 17 km och vid varvning</li>
-          <li>Maxtid: Rep dras vid varvning kl 13.20 och efter 27 km kl 14.10</li>
-        </ul>
-      </div>
-      <div class="p-4 bg-purple-200 rounded-lg">
-        <h3 class="text-2xl font-semibold mb-2">Efter Loppet</h3>
-        <p class="text-gray-800 text-lg mb-2">
-          Priser till de 3 första damer/herrar i mål på 40 km och till de 3 första damer i mål på 20 km. Prisutdelning 20 km ca kl 13.00 och för 40 km ca kl 14.00.<br>
-          Plats: Fikarummet.
-        </p>
-        <p class="text-gray-800 text-lg">
-          Utlottningspriser bland genomförda 40/20 km lopp.
-          Lista anslås vid entré och utanför fikarummet och pris lämnas mot uppvisande av nummerlapp.
-        </p>
-        <p class="text-gray-800 text-lg mt-2">
-          Gratis fika för tävlande. Finns även fika för övriga till en liten kostnad.
-        </p>
-        <p class="text-gray-800 text-lg mt-2">
-          <strong class="font-bold">Glöm inte att lämna tillbaka chipet efter målgång</strong>. Det kommer finnas personer som tar emot dem vid målet.
-          <br><strong>OBS!</strong> Om ni tvingas bryta måste chip och nummerlapp återlämnas till tävlingsexp och meddela personerna detta!
-        </p>
-      </div>
-      
     </div>
-  </div>
   </article>
 
   <article class="py-10 relative">
-  <h2 class="text-4xl font-bold text-center uppercase my-6">Preliminär karta över spåret</h2>
-    <div class="max-w-4xl mx-auto px-6 mb-8">      
-      <TrackMap class="h-[80vh]" client:visible></TrackMap>
+    <h2 class="text-4xl font-bold text-center uppercase my-6">
+      Preliminär karta över spåret
+    </h2>
+    <div class="max-w-4xl mx-auto px-6 mb-8">
+      <TrackMap class="h-[80vh]" client:visible />
     </div>
   </article>
 
   <article id="sponsors" class="mb-10">
-    <h2 class="text-4xl font-bold text-center uppercase my-6">Våra sponsorer</h2>
-    <div class="max-w-5xl px-4 mx-auto mb-8 grid gap-2 grid-cols-2 md:grid-cols-4 place-items-center">
-      <img src="/assets/umara-logo.svg" class="max-h-48 lg:max-h-72" alt="U-mara">
-      <img src="/assets/ica-nara.png" class="max-h-48 lg:max-h-72" alt="ICA Nära Hissjö handel">
-      <img src="/assets/VL_Off_SL_2024.png" class="max-h-48 lg:max-h-72" alt="Vasaloppet officiellt seedningslopp 2024">
-      <img src="/assets/Forslunda-logga.png" class="max-h-48 lg:max-h-72" alt="Forslunda gymnasiet">
+    <h2 class="text-4xl font-bold text-center uppercase my-6">
+      Våra sponsorer
+    </h2>
+    <div
+      class="max-w-5xl px-4 mx-auto mb-8 grid gap-2 grid-cols-2 md:grid-cols-4 place-items-center"
+    >
+      <img
+        src="/assets/umara-logo.svg"
+        class="max-h-48 lg:max-h-72"
+        alt="U-mara"
+      />
+      <img
+        src="/assets/ica-nara.png"
+        class="max-h-48 lg:max-h-72"
+        alt="ICA Nära Hissjö handel"
+      />
+      <img
+        src="/assets/VL_Off_SL_2025.png"
+        class="max-h-48 lg:max-h-72"
+        alt="Vasaloppet officiellt seedningslopp 2024"
+      />
+      <img
+        src="/assets/Forslunda-logga.png"
+        class="max-h-48 lg:max-h-72"
+        alt="Forslunda gymnasiet"
+      />
     </div>
   </article>
 </LoppetLayout>

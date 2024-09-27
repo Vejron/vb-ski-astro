@@ -1,42 +1,70 @@
 ---
-import TopShape from '../components/TopShape.astro';
+import TopShape from "../components/TopShape.astro";
 import "../styles/global.css";
-const {title, description, footer} = Astro.props;
+const { title, description, footer } = Astro.props;
 ---
+
 <html lang="sv">
   <head>
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Umeloppet">
-    <meta property="og:site_name" content="Skidveteranerna">
-    <meta property="og:url" content="https://skidveteraner.se/umeloppet"/>
-    <meta property="og:description" content="Nu är anmälan öppen för 2024 års upplaga av Umeloppet. Söndagen den 4:e Februari avgörs detta anrika skidlopp. Seedningsgrundande för Vasaloppet">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://skidveteraner.se/assets/veteranerna-logga.svg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="skidveteraner.se">
-    <meta property="twitter:url" content="https://skidveteraner.se/umeloppet">
-    <meta name="twitter:title" content="Umeloppet">
-    <meta name="twitter:description" content="Nu är anmälan öppen för 2024 års upplaga av Umeloppet. Söndagen den 4:e Februari avgörs detta anrika skidlopp. Seedningsgrundande för Vasaloppet">
-    <meta name="twitter:image" content="https://skidveteraner.se/assets/veteranerna-logga.svg">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta property="og:title" content="Umeloppet" />
+    <meta property="og:site_name" content="Skidveteranerna" />
+    <meta property="og:url" content="https://skidveteraner.se/umeloppet" />
+    <meta
+      property="og:description"
+      content="Nu är anmälan öppen för 2024 års upplaga av Umeloppet. Söndagen den 4:e Februari avgörs detta anrika skidlopp. Seedningsgrundande för Vasaloppet"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://skidveteraner.se/assets/veteranerna-logga.svg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="skidveteraner.se" />
+    <meta property="twitter:url" content="https://skidveteraner.se/umeloppet" />
+    <meta name="twitter:title" content="Umeloppet" />
+    <meta
+      name="twitter:description"
+      content="Nu är anmälan öppen för 2024 års upplaga av Umeloppet. Söndagen den 4:e Februari avgörs detta anrika skidlopp. Seedningsgrundande för Vasaloppet"
+    />
+    <meta
+      name="twitter:image"
+      content="https://skidveteraner.se/assets/veteranerna-logga.svg"
+    />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   </head>
   <body style="scroll-behavior: smooth;" class="">
     <!-- Adds a navigation bar to every page. -->
     <div class="shadow-xl bg-gray-100">
-      <header class="z-50 relative px-4 py-4 flex  justify-center items-center w-full max-w-4xl mx-auto">
-        <p class="sm:ml-4 whitespace-nowrap text-lg font-bold  text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600">Västerbottens skidveteraner</p>
+      <header
+        class="z-50 relative px-4 py-4 flex justify-center items-center w-full max-w-4xl mx-auto"
+      >
+        <p
+          class="sm:ml-4 whitespace-nowrap text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600"
+        >
+          Västerbottens skidveteraner
+        </p>
         <nav class="nav text-black bg-gray-100">
-          <input class="h-auto" type="checkbox" role="button" aria-label="Display the menu" aria-expanded="false" aria-controls="menu">
+          <input
+            class="h-auto"
+            type="checkbox"
+            role="button"
+            aria-label="Display the menu"
+            aria-expanded="false"
+            aria-controls="menu"
+          />
           <ul class="menu-list" id="menu">
             <li><a class="main-link" href="/">Hem</a></li>
             <li><a class="main-link" href="/nyheter">Nyheter</a></li>
             <li><a class="main-link" href="/umeloppet">Umeloppet</a></li>
             <li><a class="main-link" href="/spar-status">Spårstatus</a></li>
-            <li><a class="main-link" id="contact-id" href="#kontakt">Kontakt</a></li>
+            <li>
+              <a class="main-link" id="contact-id" href="#kontakt">Kontakt</a>
+            </li>
           </ul>
         </nav>
       </header>
@@ -44,20 +72,26 @@ const {title, description, footer} = Astro.props;
     <!-- slot: your page content will be injected here. -->
     <slot />
     <footer class="bg-gray-100 px-6 pt-12 pb-8 relative">
-      <TopShape classes={footer + " absolute -top-1 left-0 text-gray-100"}></TopShape>
-      <div id="kontakt" class="max-w-5xl mx-auto grid grid-col-1 sm:grid-cols-2 gap-8">
+      <TopShape classes={footer + " absolute -top-1 left-0 text-gray-100"} />
+      <div
+        id="kontakt"
+        class="max-w-5xl mx-auto grid grid-col-1 sm:grid-cols-2 gap-8"
+      >
         <div>
           <h2 class="font-semibold text-lg">Postadress</h2>
           <address>
-          Västerbottens Skidveteraner <br>
-          c/o Trude Hietha, Vittervägen 191 <br>
-          90751 Umeå
+            Västerbottens Skidveteraner <br />
+            c/o Trude Hietha, Vittervägen 191 <br />
+            90751 Umeå
           </address>
         </div>
         <div>
           <h2 class="font-semibold text-lg">Kontakt</h2>
-          Tel: <i>0730644462</i> <br>
-          E-post: <a href="mailto:trude.hietha@umea.riksnet.se">trude.hietha@umea.riksnet.se</a>
+          Tel: <i>0730644462</i>
+          <br />
+          E-post: <a href="mailto:trude.hietha@outlook.com"
+            >trude.hietha@outlook.com</a
+          >
         </div>
       </div>
     </footer>
@@ -65,13 +99,11 @@ const {title, description, footer} = Astro.props;
 </html>
 
 <script>
-document.querySelector('.nav input').onclick = function() {
-    if(this.checked)
-      this.setAttribute("aria-expanded",true)
-    else
-      this.setAttribute("aria-expanded",false)
-}
-document.querySelector('#contact-id').onclick = function() {
-    document.querySelector('.nav input').click()
-}
+  document.querySelector(".nav input").onclick = function () {
+    if (this.checked) this.setAttribute("aria-expanded", true);
+    else this.setAttribute("aria-expanded", false);
+  };
+  document.querySelector("#contact-id").onclick = function () {
+    document.querySelector(".nav input").click();
+  };
 </script>

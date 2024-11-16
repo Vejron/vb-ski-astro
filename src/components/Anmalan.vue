@@ -1,20 +1,22 @@
 <template>
   <div v-if="true" class="max-w-4xl mx-auto py-8 px-6">
-    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmäl är nu stängd för 2024 års lopp</h2>
+    <!--
+    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmäl är nu stängd för 2025 års lopp</h2>
     <p class="sm:text-center font-semibold text-lg mb-4">
       Vi har nått max antal startande.
     </p>
-    <!--
-    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmälan för 2024 års lopp</h2>
-    <p class="sm:text-center font-semibold text-lg mb-4">
-      Öppnar här den 15:e december.
-    </p>
     -->
+
+    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmälan för 2025 års lopp</h2>
+    <p class="sm:text-center font-semibold text-lg mb-4">
+      Öppnar här den 16:e december.
+    </p>
+
   </div>
   <div v-else class="max-w-4xl mx-auto py-8 px-6">
     <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmäl dig här</h2>
     <p class="sm:text-center font-semibold text-lg mb-4">
-      Obs! Max 400 startande och sista anmälningstid 31:a januari kl 24:00
+      Obs! Max 450 startande och sista anmälningstid 29:e januari kl 24:00
     </p>
     <form @submit.prevent="submitForm" class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6">
       <div class="flex flex-col">
@@ -160,7 +162,7 @@ import Loader from './Loader.vue'
 
 const now = useNow()
 const registerOverdue = computed(() => {
-  return now.value > new Date(2024, 0, 30, 21, 35, 59)
+  return now.value > new Date(2025, 0, 29, 21, 35, 59)
 })
 
 const state = ref<'initial' | 'submitting' | 'done'>('initial')

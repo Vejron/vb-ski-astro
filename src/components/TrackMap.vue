@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { PropType, onMounted, onUnmounted } from "vue";
 import "leaflet/dist/leaflet.css";
-import path from "../assets/path.json";
+import path from "../assets/path2025.json";
 
 const props = defineProps({
   data: Object as PropType<{

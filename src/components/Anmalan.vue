@@ -1,20 +1,20 @@
 <template>
   <div v-if="registerOverdue" class="max-w-4xl mx-auto py-8 px-6">
-
-    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmäl är nu stängd för 2025 års lopp</h2>
+    <!-- 
+    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmäl är nu stängd för 2026 års lopp</h2>
     <p class="sm:text-center font-semibold text-lg mb-4">
       Vi vill återigen vädja till alla som har möjlighet att hämta ut sin nummerlapp och chip redan på lördag den 1:a
       Februari mellan kl 13:00 och 16:00. Detta för att underlätta för oss och för att minska trängseln på
       tävlingsdagen.
       Vi har ett rekordstort startfält i år och vi vill att allt ska fungera så smidigt som möjligt för alla deltagare.
     </p>
-
-    <!-- 
-    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmälan för 2025 års lopp</h2>
-    <p class="sm:text-center font-semibold text-lg mb-4">
-      Öppnar här den 16:e december.
-    </p>
      -->
+
+    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmälan för 2026 års lopp</h2>
+    <p class="sm:text-center font-semibold text-lg mb-4">
+      Öppnar här den 15:e december.
+    </p>
+
 
   </div>
   <div v-else class="max-w-4xl mx-auto py-8 px-6">

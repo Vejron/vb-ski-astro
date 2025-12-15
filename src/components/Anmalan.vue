@@ -166,7 +166,7 @@ import Loader from './Loader.vue'
 
 const now = useNow()
 const registerOverdue = computed(() => {
-  return now.value > new Date(2025, 0, 29, 23, 59, 59)
+  return now.value > new Date(2026, 0, 29, 23, 59, 59)
 })
 
 const state = ref<'initial' | 'submitting' | 'done'>('initial')

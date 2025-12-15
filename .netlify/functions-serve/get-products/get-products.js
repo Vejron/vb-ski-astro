@@ -1,1 +1,1 @@
-module.exports = require('./src/functions/get-products.js')
+module.exports = require('./functions/get-products.js')

@@ -1,1 +1,1 @@
-module.exports = require('./src/functions/test.js')
+module.exports = require('./functions/test.js')

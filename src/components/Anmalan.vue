@@ -10,10 +10,11 @@
     </p>
      -->
 
-    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Anmälan för 2026 års lopp är tillfälligt stängd</h2>
+    <h2 class="font-bold sm:text-center text-4xl uppercase mb-4">Umeloppet inställt 2026</h2>
     <p class="sm:text-center text-red-700 font-semibold text-lg mb-4">
-      Pga snöbrist stänger vi Anmälan tills vidare. Beslut om Umeloppet kan genomföras tas måndagen den 19:e januari.
-      Går tävlingen att genomföra öppnar vi anmälan åter! Hoppas ni förstår beslutet.
+      Pga snöbrist tvingas vi tyvärr ställa in Umeloppet 2026.
+      Enligt Svenska Skidförbundets regler betalar vi tillbaka 50% av anmälningsavgiften till de som redan anmält sig.
+      Vi beklagar detta djupt och hoppas på bättre förutsättningar nästa år.
     </p>
 
 

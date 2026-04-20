@@ -1,6 +1,6 @@
 <template>
   <section class="flex flex-col gap-8">
-    <ul v-for="post in posts" :key="post.url">
+    <ul v-for="post in sorted()" :key="post.url">
       <li class="group relative overflow-hidden flex flex-col sm:flex-row gap-8">
         <a :href="post.url">
           <img
@@ -10,7 +10,7 @@
         </a>
         <div>
           <h3 class="font-semibold text-xl">{{ post.frontmatter.displaytitle }}</h3>
-          <p>{{post.frontmatter.description}}</p>
+          <p>{{ post.frontmatter.description }}</p>
         </div>
       </li>
     </ul>
@@ -23,6 +23,7 @@ const props = defineProps({
 });
 
 const sorted = () => {
+  // Sort posts by date, newest first
   return props.posts.sort((a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date));
 }
 </script>

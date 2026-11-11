@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="not-prose">
     <h2 class="text-4xl font-bold text-white sm:text-center uppercase py-6">Spårstatus i umeåområdet</h2>
 
     <p class="sm:text-center mb-7 mx-auto max-w-4xl">
@@ -25,8 +25,8 @@
 
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
-import SkiGrid from "./SkiGrid.vue"
-import Loader from "./Loader.vue"
+import SkiGrid from "../SkiGrid.vue"
+import Loader from "../Loader.vue"
 
 const loading = ref(false)
 const error = ref(false)
@@ -36,7 +36,7 @@ const getTrackStatus = async () => {
   loading.value = true
   await new Promise(r => setTimeout(r, 500));
   try {
-    const resp = await fetch('/.netlify/functions/get-tracks', {
+    const resp = await fetch('/api/tracks', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

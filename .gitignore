@@ -1,4 +1,9 @@
-# build output
+# Nuxt
+.output
+.data
+.nuxt
+.nitro
+.cache
 dist
 
 # dependencies
@@ -6,15 +11,17 @@ node_modules/
 
 # logs
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # environment variables
 .env
-.env.production
+.env.*
+!.env.example
 
 # macOS-specific files
 .DS_Store
 
 # Local Netlify folder
 .netlify
+
+# local files
+temp/

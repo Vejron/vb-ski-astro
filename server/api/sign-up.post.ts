@@ -1,161 +1,100 @@
-
 import { createTransport } from 'nodemailer'
-import { Handler } from '@netlify/functions'
+import { racePhase, swedishDate, type Race } from '#shared/race'
 
-const ReceiverMail = 'trude.hietha@outlook.com'
-//const ReceiverMail = 'bjorn.yttergren@gmail.com'
 interface Anmalan {
   name: string
   email: string
   club: string
   class: string
-  distance: "long" | "short" | "para"
+  distance: string
   vasa: string
-  paymethod: "swish" | "bg"
+  paymethod: 'swish' | 'pg'
 }
 
 const transporter = createTransport({
-  service: 'SendinBlue', // no need to set host or port etc.
+  service: 'SendinBlue',
   auth: {
     user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS
-  }
-});
+    pass: process.env.SMTP_PASS,
+  },
+})
 
-const translateDistance = (distance: "long" | "short" | "para") => {
-  switch (distance) {
-    case 'long':
-      return '40 Km'
-    case 'short':
-      return '20 Km'
-    case 'para':
-      return '5 km Paraklass'
+const escape = (s: unknown) =>
+  String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#39;' })[c]!)
 
-    default:
-      return 'Okänd'
-  }
-}
+const row = (label: string, value: unknown) =>
+  `<tr><th style="text-align: left;">${label}</th><td>${escape(value)}</td></tr>`
 
-const getCost = (distance: "long" | "short" | "para") => {
-  switch (distance) {
-    case 'long':
-      return '400'
-    case 'short':
-      return '300'
-    case 'para':
-      return '100'
-
-    default:
-      return '400'
-  }
-}
-
-const formatAnmalan = (data: Anmalan) => {
-  return `
+const formatTable = (data: Anmalan, race: Race, withPayment: boolean) => `
   <table>
-  <tr>
-    <th style="text-align: left;">Namn</th>
-    <td>${data.name}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">E-post</th>
-    <td>${data.email}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">Klubb</th>
-    <td>${data.club}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">Klass</th>
-    <td>${data.class}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">Sträcka</th>
-    <td>${translateDistance(data.distance)}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">Eventuell Vasa ID</th>
-    <td>${data.vasa}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">Betalning via</th>
-    <td>${data.paymethod}</td>
-  </tr>
-</table>
-  `
-}
+    ${row('Namn', data.name)}
+    ${row('E-post', data.email)}
+    ${row('Klubb', data.club)}
+    ${row('Klass', data.class)}
+    ${row('Sträcka', race.distances.find(d => d.id === data.distance)?.name)}
+    ${row('Eventuell Vasa ID', data.vasa)}
+    ${withPayment ? row('Betalning via', data.paymethod === 'pg' ? 'PlusGirot' : 'Swish') : ''}
+  </table>`
 
-const formatVerify = (data: Anmalan) => {
+const formatVerify = (data: Anmalan, race: Race) => {
+  const price = race.distances.find(d => d.id === data.distance)?.price
   return `
-  <p>Här kommer en bekräftelse på din anmälan till Umeloppet 2026.<br>
-  Kom ihåg att betala avgiften så snart som möjligt men senast 31:a januari 2026.<br>
-  ${getCost(data.distance)}:- till swish: 123 541 1848 eller pg: 780801-7</p>
+  <p>Här kommer en bekräftelse på din anmälan till Umeloppet ${race.year}.<br>
+  Kom ihåg att betala avgiften så snart som möjligt men senast ${swedishDate(race.payByDate)}.<br>
+  ${price}:- till swish: ${race.payment.swish} eller pg: ${race.payment.plusgiro}</p>
   <p>Detta är ett automatgenererat mail och går inte att svara på</p>
-  <table>
-  <tr>
-    <th style="text-align: left;">Namn</th>
-    <td>${data.name}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">E-post</th>
-    <td>${data.email}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">Klubb</th>
-    <td>${data.club}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">Klass</th>
-    <td>${data.class}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">Sträcka</th>
-    <td>${translateDistance(data.distance)}</td>
-  </tr>
-  <tr>
-    <th style="text-align: left;">Eventuell Vasa ID</th>
-    <td>${data.vasa}</td>
-  </tr>
-</table>
-  `
+  ${formatTable(data, race, false)}`
 }
 
-const handler: Handler = async (event, context) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: "Method not allowed" }
-  } else {
-    const bodyJSON = JSON.parse(event.body) as Anmalan
-    try {
+export default defineEventHandler(async (event) => {
+  const race = await getRace()
 
-
-      const anmalan = {
-        from: 'anmalan@skidveteraner.se',
-        to: ReceiverMail,
-        subject: '🔥Anmälan för ' + bodyJSON.name + ' till Umeloppet 2026',
-        text: `Din läsare stödjer inte html... bummer`,
-        html: formatAnmalan(bodyJSON)
-      };
-
-      const res1 = await transporter.sendMail(anmalan)
-
-      // SEND VERIFY EMAIL LINK
-      const verify = {
-        from: 'anmalan@skidveteraner.se',
-        to: bodyJSON.email,
-        subject: '🔥Din anmälan till Umeloppet 2026',
-        text: `Din läsare stödjer inte html... bummer`,
-        html: formatVerify(bodyJSON)
-      }
-
-      const res2 = await transporter.sendMail(verify)
-
-      return { statusCode: 200, body: JSON.stringify(res2) }
-    } catch (err) {
-      return { statusCode: 500, body: err.toString() }
-    }
+  if (racePhase(race) !== 'open') {
+    throw createError({ statusCode: 403, statusMessage: 'Closed', message: 'Anmälan är stängd' })
   }
 
-}
+  const body = await readBody<Partial<Anmalan>>(event)
+  const distance = race.distances.find(d => d.id === body?.distance)
+  const valid = body
+    && typeof body.name === 'string' && body.name.trim()
+    && typeof body.email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)
+    && distance
+    && typeof body.class === 'string' && distance.classes.includes(body.class)
+  if (!valid) {
+    throw createError({ statusCode: 400, statusMessage: 'Bad request', message: 'Ogiltig anmälan' })
+  }
 
+  const data: Anmalan = {
+    name: body.name!.trim(),
+    email: body.email!.trim(),
+    club: String(body.club ?? '').trim(),
+    class: body.class!,
+    distance: body.distance!,
+    vasa: String(body.vasa ?? '').trim(),
+    paymethod: body.paymethod === 'pg' ? 'pg' : 'swish',
+  }
 
-export { handler }
+  try {
+    await transporter.sendMail({
+      from: 'anmalan@skidveteraner.se',
+      to: race.receiverEmail,
+      subject: `🔥Anmälan för ${data.name} till Umeloppet ${race.year}`,
+      text: 'Din läsare stödjer inte html... bummer',
+      html: formatTable(data, race, true),
+    })
+
+    await transporter.sendMail({
+      from: 'anmalan@skidveteraner.se',
+      to: data.email,
+      subject: `🔥Din anmälan till Umeloppet ${race.year}`,
+      text: 'Din läsare stödjer inte html... bummer',
+      html: formatVerify(data, race),
+    })
+  }
+  catch (err) {
+    console.error(err)
+    throw createError({ statusCode: 500, statusMessage: 'Mail error', message: 'Vi kunde inte slutföra din anmälan' })
+  }
+
+  return { ok: true }
+})

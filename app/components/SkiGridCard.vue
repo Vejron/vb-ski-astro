@@ -68,10 +68,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, PropType, ref } from "vue"
+import { computed, type PropType, ref } from "vue"
 import { useTimeAgo } from '@vueuse/core'
 import StatusMap from "./StatusMap.vue"
-import { getForecast } from "../services/smhi.service"
 
 import {
   Dialog,
@@ -81,14 +80,14 @@ import {
   TransitionRoot,
 } from "@headlessui/vue"
 const props = defineProps({
-  data: Object as PropType<{
+  data: { required: true, type: Object as PropType<{
     name: string
     info: string
     date: string
     length: number
     electric: boolean
     location: any[]
-  }>,
+  }> },
 })
 const open = ref(false)
 const temp = ref(0)
@@ -105,7 +104,6 @@ const openDialog = async () => {
   const res = await getForecast(props.data.location)
   if (res.status === 200) {
     const json = await res.json()
-    console.log(json)
     temp.value = json.timeSeries[0].parameters[10].values[0]
     moist.value = json.timeSeries[0].parameters[15].values[0]
   }

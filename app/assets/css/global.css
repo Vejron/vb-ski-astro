@@ -36,7 +36,7 @@ html {
   background-position-x: 55%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  //background-size: cover;
+  /* background-size: cover; */
   mask-image: radial-gradient(
     circle,
     #333,
@@ -52,7 +52,7 @@ html {
   background-position-y: 50%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  //background-size: cover;
+  /* background-size: cover; */
   mask-image: radial-gradient(
     circle,
     #333,
@@ -205,4 +205,45 @@ html {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+/* ── Markdown inside ::section and ::anmalan ─────────────────────────── */
+.md-section h1 {
+  @apply text-4xl font-bold uppercase my-4;
+}
+.md-section h2 {
+  @apply text-4xl font-bold uppercase my-6 sm:text-center;
+}
+.md-section h1 a,
+.md-section h2 a,
+.md-section h3 a {
+  @apply no-underline;
+}
+.md-section > p,
+.md-section > div:not(.not-prose) > p {
+  @apply mb-4;
+}
+.md-section > p a,
+.md-section > div:not(.not-prose) > p a,
+.info-card a {
+  @apply font-semibold text-blue-600 hover:underline;
+}
+.md-section > div > ul {
+  @apply text-left;
+}
+
+.info-card + .info-card {
+  @apply mt-4;
+}
+.info-card p {
+  @apply mb-3;
+}
+.info-card ul {
+  @apply space-y-2 list-disc list-inside mb-4;
+}
+.info-card img {
+  @apply w-full h-full;
+}
+
+.anmalan-closed p {
+  @apply text-lg mb-4;
 }

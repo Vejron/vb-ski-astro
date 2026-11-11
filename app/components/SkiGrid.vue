@@ -5,12 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, PropType } from "vue";
+import { computed, type PropType } from "vue";
 import SkiGridCard from "./SkiGridCard.vue"
 const props = defineProps({
-  table: Array as PropType<{ name: string, info: string, date: string }[]>
+  table: { type: Array as PropType<any[]>, required: true }
 });
 const ordered = computed(() =>
-  props.table.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+  [...props.table].sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
 );
 </script>

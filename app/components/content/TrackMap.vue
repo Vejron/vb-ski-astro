@@ -1,11 +1,11 @@
 <template>
-  <div id="mainMapContainer" class="w-full"></div>
+  <div id="mainMapContainer" class="w-full h-[80vh]"></div>
 </template>
 
 <script setup lang="ts">
-import { PropType, onMounted, onUnmounted } from "vue";
+import { type PropType, onMounted, onUnmounted } from "vue";
 import "leaflet/dist/leaflet.css";
-import path from "../assets/path2025.json";
+import path from "~/assets/path2025.json";
 
 const props = defineProps({
   data: Object as PropType<{
@@ -26,10 +26,9 @@ onMounted(async () => {
 });
 
 onUnmounted(() => {
-  console.log("destroy map now");
   map && map.remove();
 });
-const setupLeafletMap = (location: any, L) => {
+const setupLeafletMap = (location: any, L: any) => {
   const map = new L.map("mainMapContainer", { zoomControl: false }).setView(
     location,
     13

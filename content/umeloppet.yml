@@ -1,0 +1,88 @@
+# ─────────────────────────────────────────────────────────────
+#  UMELOPPET – all race data in one place.
+#  This is the file to update every year.
+#  Dates are Swedish time. Write them as "YYYY-MM-DD" or "YYYY-MM-DDTHH:MM".
+# ─────────────────────────────────────────────────────────────
+
+year: 2027
+edition: 16                 # "det 16:e Umeloppet" (2026 was cancelled)
+date: "2027-01-31"          # race day
+startTime: "11:00"
+location: Forslundagymnasiet, Umeå
+
+registration:
+  # auto      = open between "opens" and "closes" (normal setting)
+  # open      = force open (ignores the dates)
+  # closed    = force closed
+  # full      = closed because max participants is reached
+  # cancelled = race cancelled
+  status: auto
+  opens: "2026-12-25"
+  closes: "2027-01-27T23:59"
+  maxParticipants: 450
+
+payByDate: "2027-01-30"     # shown in the confirmation email
+payment:
+  swish: "123 541 1848"
+  plusgiro: "780801-7"
+
+# Email that receives every registration
+receiverEmail: trude.hietha@outlook.com
+
+distances:
+  - id: long
+    name: 40 km
+    price: 400
+    laps: 2
+    seeding: Vasaloppet
+    classes:
+      - Herrar Motion
+      - Damer Motion
+      - D21
+      - D35
+      - D40
+      - D45
+      - D50
+      - D55
+      - D60
+      - D65
+      - D70
+      - D75
+      - D80+
+      - H21
+      - H35
+      - H40
+      - H45
+      - H50
+      - H55
+      - H60
+      - H65
+      - H70
+      - H75
+      - H80+
+  - id: short
+    name: 20 km
+    price: 300
+    laps: 1
+    seeding: Tjejvasan
+    classes:
+      - Herrar Motion
+      - Damer Motion
+
+# PDFs in public/files/. Leave empty to hide the link.
+documents:
+  results:
+  startlist:
+  pm:
+  inbjudan: /files/inbjudan-umeloppet-2027.pdf
+
+# Logos in public/assets/
+sponsors:
+  - name: U-mara
+    logo: /assets/umara-logo.svg
+  - name: ICA Nära Hissjö handel
+    logo: /assets/ica-nara.png
+  - name: Vasaloppet officiellt seedningslopp 2027
+    logo: /assets/VL_Off_SL_2027.png
+  - name: Forslunda gymnasiet
+    logo: /assets/Forslunda-logga.png

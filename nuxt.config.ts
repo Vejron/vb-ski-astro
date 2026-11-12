@@ -6,6 +6,9 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/global.css'],
 
+  // <umeloppet-map> (public/umeloppet-map/) is a web component, not a Vue component.
+  vue: { compilerOptions: { isCustomElement: (tag) => tag === 'umeloppet-map' } },
+
   site: { url: 'https://skidveteraner.se', name: 'Västerbottens skidveteraner' },
 
   app: {
